@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">sales_force</string>
+    <string name="txt_Header">Sales Force - Caride</string>
+    <string name="txt_Login">Usuário:</string>
+    <string name="but_Login">Acessar</string>
+    <string name="but_CreateUser">Criar Usuário</string>
+    <string name="txt_sugest_NewUser">Ainda não possui usuário?</string>
+    <string name="title_activity_create_user">activity_create_user</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_UserName" >Nome:</string>
+    <string name="txt_Password">Senha:</string>
+    <string name="txt_input_UserName" />
+    <string name="txt_input_UserLogin" />
+    <string name="txt_input_UserPassword" />
+    <string name="txt_title_UserRegister">Cadastro de Usuário</string>
+</resources>
