@@ -47,4 +47,6 @@
     <string name="txt_input_ClientCEP" />
     <string name="txt_ClientUF">UF</string>
     <string name="txt_input_ClientCPF" />
+    <string name="but_RegisterUser">Cadastrar Usuário</string>
+    <string name="txt_title_Welcome">Bem vindo!</string>
 </resources>
