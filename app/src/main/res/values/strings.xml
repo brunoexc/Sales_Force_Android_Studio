@@ -21,14 +21,14 @@
     <string name="but_RegisterProduct">Cadastrar Produto</string>
     <string name="but_RegisterOrder">Criar Pedido</string>
     <string name="but_Return">Retornar</string>
-    <string name="txt_title_ClientRegister" >Cadastro de Cliente</string>
-    <string name="txt_ClientEmail" >Email:</string>
-    <string name="txt_ClientPhone" >Telefone:</string>
+    <string name="txt_title_ClientRegister">Cadastro de Cliente</string>
+    <string name="txt_ClientEmail">Email:</string>
+    <string name="txt_ClientPhone">Telefone:</string>
     <string name="txt_input_ClientPhone" />
     <string name="txt_input_ClientEmail" />
     <string name="rad_ClientType_F">Física</string>
     <string name="rad_ClientType_J">Jurídica</string>
-    <string name="txt_ClientName" >Nome:</string>
+    <string name="txt_ClientName">Nome:</string>
     <string name="txt_input_ClientName" />
     <string name="txt_ClientCPF">CPF:</string>
     <string name="txt_ClientCNPJ">CNPJ:</string>
@@ -49,4 +49,16 @@
     <string name="txt_input_ClientCPF" />
     <string name="but_RegisterUser">Cadastrar Usuário</string>
     <string name="txt_title_Welcome">Bem vindo!</string>
+    <string name="txt_title_ProductRegister">Cadastro de Produto</string>
+    <string name="txt_ProductName">Nome:</string>
+    <string name="rad_Status_A">Ativo</string>
+    <string name="rad_Status_D">Inativo</string>
+    <string name="txt_ProductUM">UM:</string>
+    <string name="txt_ProductStock">Quantidade Estoque:</string>
+    <string name="txt_input_ProductQTD" />
+    <string name="txt_ProductCost">"Custo: "</string>
+    <string name="txt_ProductCostUM">R$</string>
+    <string name="txt_ProductSalesCost">Preço Venda:</string>
+    <string name="txt_ProductBarCode">Código de Barras</string>
+    <string name="but_ProductRegister_end">Cadastrar</string>
 </resources>

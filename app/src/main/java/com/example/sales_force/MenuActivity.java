@@ -25,6 +25,8 @@ public class MenuActivity extends AppCompatActivity {
 
     public void OnClickbuttonCadastrarProduto (View view){
 
+        Intent call_activity_register_product = new Intent(this, RegisterProduct.class);
+        startActivity(call_activity_register_product);
 
     }
 
