@@ -10,6 +10,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -26,10 +27,12 @@
 
     <TextView
         android:id="@+id/txt_title_ClientRegister"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="110dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="0"
         android:text="@string/txt_title_ClientRegister"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -39,377 +42,412 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="402dp"
-        android:layout_height="209dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="5dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="1dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientRegister">
-
-        <TextView
-            android:id="@+id/txt_subtitle1_Client"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_subtitle1_Client"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txt_ClientName"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/txt_ClientName"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientName"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Nome do Cliente"
-                android:inputType="textPersonName"
-                android:text="@string/txt_input_ClientName"
-                android:textSize="16sp" />
-
-        </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txt_ClientEmail"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/txt_ClientEmail"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientEmail"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="emailclient@ucl.br"
-                android:inputType="textEmailAddress"
-                android:text="@string/txt_input_ClientEmail"
-                android:textAlignment="viewStart"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txt_ClientPhone"
-                android:layout_width="72dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/txt_ClientPhone"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientPhone"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="(27) 99999-9999"
-                android:inputType="phone"
-                android:text="@string/txt_input_ClientPhone"
-                android:textAlignment="viewStart"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:orientation="horizontal">
-
-            <RadioGroup
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <RadioButton
-                    android:id="@+id/rad_ClientType_F"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/rad_ClientType_F"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <RadioButton
-                    android:id="@+id/rad_ClientType_J"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/rad_ClientType_J"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </RadioGroup>
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientRegister">
+
+                <TextView
+                    android:id="@+id/txt_subtitle1_Client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_subtitle1_Client"
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/txt_ClientCPF"
-                        android:layout_width="60dp"
+                        android:id="@+id/txt_ClientName"
+                        android:layout_width="72dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/txt_ClientCPF"
-                        android:textAlignment="textStart"
+                        android:layout_weight="0"
+                        android:text="@string/txt_ClientName"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/txt_input_ClientCPF"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:id="@+id/txt_input_ClientName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="000.000.000-00"
+                        android:hint="Nome do Cliente"
                         android:inputType="textPersonName"
-                        android:text="@string/txt_input_ClientCPF"
+                        android:text="@string/txt_input_ClientName"
                         android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/txt_ClientCNPJ"
-                        android:layout_width="60dp"
+                        android:id="@+id/txt_ClientEmail"
+                        android:layout_width="72dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/txt_ClientCNPJ"
-                        android:textAlignment="textStart"
+                        android:layout_weight="0"
+                        android:text="@string/txt_ClientEmail"
+                        android:textAlignment="viewStart"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/txt_input_ClientCNPJ"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
+                        android:id="@+id/txt_input_ClientEmail"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="00.000.000/0000-00"
-                        android:inputType="textPersonName"
-                        android:text="@string/txt_input_ClientCNPJ"
+                        android:hint="emailclient@ucl.br"
+                        android:inputType="textEmailAddress"
+                        android:text="@string/txt_input_ClientEmail"
+                        android:textAlignment="viewStart"
                         android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ClientPhone"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/txt_ClientPhone"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientPhone"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="(27) 99999-9999"
+                        android:inputType="phone"
+                        android:text="@string/txt_input_ClientPhone"
+                        android:textAlignment="viewStart"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/rad_ClientType_F"
+                                android:layout_width="123dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rad_ClientType_F"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+                                android:id="@+id/rad_ClientType_J"
+                                android:layout_width="125dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rad_ClientType_J"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_ClientCPF"
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/txt_ClientCPF"
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txt_input_ClientCPF"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:hint="000.000.000-00"
+                                android:inputType="textPersonName"
+                                android:text="@string/txt_input_ClientCPF"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_ClientCNPJ"
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/txt_ClientCNPJ"
+                                android:textAlignment="textStart"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txt_input_ClientCNPJ"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:hint="00.000.000/0000-00"
+                                android:inputType="textPersonName"
+                                android:text="@string/txt_input_ClientCNPJ"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="162dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                <TextView
+                    android:id="@+id/txt_subtitle2_Client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_subtitle2_Client"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ClientAddress"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ClientAddress"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientAddress"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Rua das Flores"
+                        android:inputType="textPersonName"
+                        android:text="@string/txt_input_ClientAddress" />
+
+                    <TextView
+                        android:id="@+id/txt_ClientAddressNum"
+                        android:layout_width="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_ClientAddressNum"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientAddressNum"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="25"
+                        android:inputType="number"
+                        android:text="@string/txt_input_ClientAddressNum" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ClientDistrict"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ClientDistrict"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientDistrict"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Laranjeiras"
+                        android:inputType="textPersonName"
+                        android:text="@string/txt_input_ClientDistrict" />
+
+                    <TextView
+                        android:id="@+id/txt_ClientUF"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ClientUF"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/combo_ClientUF"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="418dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ClientCity"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ClientCity"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientCity"
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Serra"
+                        android:inputType="textPersonName"
+                        android:text="@string/txt_input_ClientCity" />
+
+                    <TextView
+                        android:id="@+id/txt_ClientCEP"
+                        android:layout_width="35dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ClientCEP"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ClientCEP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="29165-000"
+                        android:inputType="textPostalAddress"
+                        android:text="@string/txt_input_ClientCEP" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/but_Register"
+                android:layout_width="158dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="124dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:text="@string/but_Create"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="402dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <TextView
-            android:id="@+id/txt_subtitle2_Client"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_subtitle2_Client"
-            android:textSize="14sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txt_ClientAddress"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_ClientAddress"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientAddress"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Rua das Flores"
-                android:inputType="textPersonName"
-                android:text="@string/txt_input_ClientAddress" />
-
-            <TextView
-                android:id="@+id/txt_ClientAddressNum"
-                android:layout_width="5dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/txt_ClientAddressNum"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientAddressNum"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="25"
-                android:inputType="number"
-                android:text="@string/txt_input_ClientAddressNum" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txt_ClientDistrict"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_ClientDistrict"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientDistrict"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Laranjeiras"
-                android:inputType="textPersonName"
-                android:text="@string/txt_input_ClientDistrict" />
-
-            <TextView
-                android:id="@+id/txt_ClientUF"
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_ClientUF"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/combo_ClientUF"
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:spinnerMode="dropdown" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="418dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txt_ClientCity"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_ClientCity"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientCity"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Serra"
-                android:inputType="textPersonName"
-                android:text="@string/txt_input_ClientCity" />
-
-            <TextView
-                android:id="@+id/txt_ClientCEP"
-                android:layout_width="35dp"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_ClientCEP"
-                android:textAlignment="viewStart"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txt_input_ClientCEP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="29165-000"
-                android:inputType="textPostalAddress"
-                android:text="@string/txt_input_ClientCEP" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/but_Register"
-        android:layout_width="163dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight="1"
-        android:text="@string/but_Create"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,10 +37,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    public void OnClickbuttonRetornar (View view){
+    public void OnClickbuttonCadastrarUsuario (View view){
 
-        Intent call_activity_main = new Intent(this, MainActivity.class);
-        startActivity(call_activity_main);
+        Intent call_activity_create_user = new Intent(this, CreateUserActivity.class);
+        startActivity(call_activity_create_user);
 
     }
 }
