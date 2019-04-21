@@ -61,4 +61,9 @@
     <string name="txt_ProductSalesCost">Preço Venda:</string>
     <string name="txt_ProductBarCode">Código de Barras</string>
     <string name="but_ProductRegister_end">Cadastrar</string>
+    <string name="txt_title_ClientOrder">Cadastro de Pedido</string>
+    <string name="but_newClientOrder">Registrar Novo Pedido</string>
+    <string name="txt_subtitle_CreateNewOrder">Clique no Botão Acima para Registrar Novo Pedido</string>
+    <string name="but_ClientOrderPayment">Pagamento</string>
+    <string name="txt_cab_OrderID">Número do Pedido:</string>
 </resources>

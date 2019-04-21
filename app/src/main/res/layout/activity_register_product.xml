@@ -199,7 +199,7 @@
 
                             <EditText
                                 android:id="@+id/txt_input_ProductQTD2"
-                                android:layout_width="100dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0"
                                 android:ems="10"
@@ -229,7 +229,7 @@
 
                         <EditText
                             android:id="@+id/txt_input_ProductQTD3"
-                            android:layout_width="100dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:ems="10"
