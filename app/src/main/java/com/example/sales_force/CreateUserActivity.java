@@ -62,28 +62,16 @@ public class CreateUserActivity extends AppCompatActivity {
         get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
         input_password = get_password.getText().toString();
 
-//        listaUsuarios.add(new Users(1, input_name, input_user, input_password));
-
-
-//      listaUsuarios.add(new Usuario(1, input_name, input_user, input_password));
-
 
         controller = new UserController(this);
         controller.SaveUserOnFile(1, input_name, input_user, input_password);
 
-//        controller.SaveUserOnFile(listaUsuarios);
 
 
 
 
-//        Toast.makeText(this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
 
 
-//        Intent call_activity_menu = new Intent(this, MenuActivity.class);
-//        startActivity(call_activity_menu);
-
-
-//      adaptador = new ArrayAdapter<Usuario>( this, android.R.layout.simple_list_item_1, listaUsuarios);
 
 
 
@@ -104,3 +92,17 @@ public class CreateUserActivity extends AppCompatActivity {
 
 
 }
+
+
+
+
+//        listaUsuarios.add(new Users(1, input_name, input_user, input_password));
+//      listaUsuarios.add(new Usuario(1, input_name, input_user, input_password));
+//        controller.SaveUserOnFile(listaUsuarios);
+
+
+
+
+//        Toast.makeText(this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+
+//      adaptador = new ArrayAdapter<Usuario>( this, android.R.layout.simple_list_item_1, listaUsuarios);

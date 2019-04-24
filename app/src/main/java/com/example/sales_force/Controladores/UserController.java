@@ -2,12 +2,14 @@ package com.example.sales_force.Controladores;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.CreateUserActivity;
+import com.example.sales_force.MenuActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UserController {
 
-    Users user = new Users();
+    Users user_global = new Users();
     private Context context;
 
     public UserController(Context context) {
@@ -38,10 +40,10 @@ public class UserController {
 //      public void SaveUserOnFile (ArrayList<Users> lista){
 
 
-        this.user.id = id;
-        this.user.name = name;
-        this.user.user = user;
-        this.user.password = password;
+        this.user_global.id = id;
+        this.user_global.name = name;
+        this.user_global.user = user;
+        this.user_global.password = password;
 
 
         Toast.makeText(this.context, "Cheguei no Método", Toast.LENGTH_SHORT).show();
@@ -53,10 +55,10 @@ public class UserController {
 
 //            for (Users u : lista) {
                 JSONObject obj = new JSONObject();
-                obj.put("id", this.user.id);
-                obj.put("nome", this.user.name);
-                obj.put("nome", this.user.user);
-                obj.put("senha", this.user.password);
+                obj.put("id", this.user_global.id);
+                obj.put("nome", this.user_global.name);
+                obj.put("nome", this.user_global.user);
+                obj.put("senha", this.user_global.password);
 
 //                obj.put("id", u.id);
 //                obj.put("nome", u.name);
@@ -81,7 +83,13 @@ public class UserController {
     }
 
 
-//    public void ReadUserOnFile (String usuario, String senha){
+//    public void ReadUserOnFile (String user_p, String password_p){
+//
+//
+//        this.user_global.user = user_p;
+//        this.user_global.password = password_p;
+//
+////        Toast.makeText(this.context, "Usuário ou Senha Incorreto", Toast.LENGTH_SHORT).show();
 //
 //
 //        try {
@@ -104,13 +112,24 @@ public class UserController {
 //            String jsonStr = sb.toString();
 //            JSONObject jsonObj = new JSONObject(jsonStr);
 //            JSONArray dados = jsonObj.getJSONArray("dados");
+//
 //            for (int i = 0; i < dados.length(); i++) {
 //                JSONObject c = dados.getJSONObject(i);
-//                Users u = new Users();
-//                u.id = c.getInt("id");
-//                u.name  = c.getString("nome");
-//                u.password = c.getString("senha");
-//                lista.add(u);
+//                Users user_comparativo = new Users();
+//                user_comparativo.id = c.getInt("id");
+//                user_comparativo.user  = c.getString("user");
+//                user_comparativo.password = c.getString("senha");
+//
+//                if (user_comparativo.user == this.user_global.toString() && user_comparativo.password == user_global.password.toString() ){
+//
+//                    Intent call_activity_menu = new Intent(this.context, MenuActivity.class);
+//                    context.startActivity(call_activity_menu);
+//                }
+//                else{
+//                    Toast.makeText(this.context, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
+//                }
+//
+////                lista.add(u);
 //                //Toast.makeText(this, u.toString(), Toast.LENGTH_SHORT).show();
 //            }
 //        } catch ( IOException| JSONException e) {
