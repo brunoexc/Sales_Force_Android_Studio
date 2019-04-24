@@ -51,7 +51,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
 //      input_id = findViewById(R.id.txt_input_User);
 
-        listaUsuarios = new ArrayList<Users>();
+//        listaUsuarios = new ArrayList<Users>();
 
         get_name = (EditText) findViewById(R.id.txt_input_UserName);
         input_name = get_name.getText().toString();
@@ -67,15 +67,9 @@ public class CreateUserActivity extends AppCompatActivity {
         controller.SaveUserOnFile(1, input_name, input_user, input_password);
 
 
-
-
-
-
-
-
-
-
     }
+
+
 
 
     public void OnClickbuttonCancelar (View view){

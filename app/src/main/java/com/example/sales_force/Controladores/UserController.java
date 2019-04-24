@@ -57,7 +57,7 @@ public class UserController {
                 JSONObject obj = new JSONObject();
                 obj.put("id", this.user_global.id);
                 obj.put("nome", this.user_global.name);
-                obj.put("nome", this.user_global.user);
+                obj.put("user", this.user_global.user);
                 obj.put("senha", this.user_global.password);
 
 //                obj.put("id", u.id);
@@ -83,14 +83,10 @@ public class UserController {
     }
 
 
-    public void ReadUserOnFile (String user_p, String password_p){
-
+    public boolean ReadUserOnFile (String user_p, String password_p, Boolean validate_user){
 
 //        this.user_global.user = user_p;
 //        this.user_global.password = password_p;
-
-//        Toast.makeText(this.context, "Usuário ou Senha Incorreto", Toast.LENGTH_SHORT).show();
-
 
         try {
             FileInputStream fis = this.context.openFileInput("usuarios.txt");
@@ -101,8 +97,11 @@ public class UserController {
 
             do{
                 linha = reader.readLine();
-                if (sb.length() != 0)
+                if (sb.length() != 0) {
                     sb.append('\n');
+                }else{
+                    Toast.makeText(this.context, "Arquivo Vazio", Toast.LENGTH_SHORT).show();
+                }
                 sb.append(linha);
             }while(linha != null);
 
@@ -113,6 +112,8 @@ public class UserController {
             JSONObject jsonObj = new JSONObject(jsonStr);
             JSONArray dados = jsonObj.getJSONArray("dados");
 
+
+
             for (int i = 0; i < dados.length(); i++) {
                 JSONObject c = dados.getJSONObject(i);
                 Users user_comparativo = new Users();
@@ -120,25 +121,52 @@ public class UserController {
                 user_comparativo.user  = c.getString("user");
                 user_comparativo.password = c.getString("senha");
 
-                if (user_comparativo.user.equals(user_p) && user_comparativo.password.equals(password_p) ){
-                    Intent call_activity_menu = new Intent(this.context, MenuActivity.class);
-                    context.startActivity(call_activity_menu);
-                }
-                else{
-                    Toast.makeText(this.context, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
-                }
-
-//                lista.add(u);
-                //Toast.makeText(this, u.toString(), Toast.LENGTH_SHORT).show();
+                if (user_comparativo.user.equals(user_p) && user_comparativo.password.equals(password_p) )
+                    validate_user = true;
             }
+
         } catch ( IOException| JSONException e) {
             Log.e("ERRO", e.getMessage());
         }
+
+        return validate_user;
     }
 
 
 
+    public void SaveAdminOnFile (){
 
+        int admin_id = 0;
+        String admin_name = "Admin Caride";
+        String admin_user = "admin";
+        String admin_password = "admin";
+
+        try {
+            JSONObject jsonObj = new JSONObject();
+            JSONArray dados = new JSONArray();
+
+            JSONObject obj = new JSONObject();
+
+            obj.put("id", admin_id);
+            obj.put("nome", admin_name);
+            obj.put("user", admin_user);
+            obj.put("senha", admin_password);
+            dados.put(obj);
+
+            jsonObj.put("Usuários",dados);
+
+            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
+            PrintWriter writter = new PrintWriter(fos);
+            writter.println(jsonObj.toString());
+            writter.flush();
+            writter.close();
+            fos.close();
+
+        } catch (IOException | JSONException e) {
+            Log.e("ERRO", e.getMessage());
+        }
+
+    }
 
 }
 
