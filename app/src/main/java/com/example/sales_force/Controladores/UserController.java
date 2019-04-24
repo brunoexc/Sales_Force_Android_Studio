@@ -83,59 +83,58 @@ public class UserController {
     }
 
 
-//    public void ReadUserOnFile (String user_p, String password_p){
-//
-//
+    public void ReadUserOnFile (String user_p, String password_p){
+
+
 //        this.user_global.user = user_p;
 //        this.user_global.password = password_p;
-//
-////        Toast.makeText(this.context, "Usuário ou Senha Incorreto", Toast.LENGTH_SHORT).show();
-//
-//
-//        try {
-//            FileInputStream fis = this.context.openFileInput("usuarios.txt");
-//
-//            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
-//            StringBuilder sb = new StringBuilder();
-//            String linha;
-//
-//            do{
-//                linha = reader.readLine();
-//                if (sb.length() != 0)
-//                    sb.append('\n');
-//                sb.append(linha);
-//            }while(linha != null);
-//
-//            reader.close();
-//            fis.close();
-//
-//            String jsonStr = sb.toString();
-//            JSONObject jsonObj = new JSONObject(jsonStr);
-//            JSONArray dados = jsonObj.getJSONArray("dados");
-//
-//            for (int i = 0; i < dados.length(); i++) {
-//                JSONObject c = dados.getJSONObject(i);
-//                Users user_comparativo = new Users();
-//                user_comparativo.id = c.getInt("id");
-//                user_comparativo.user  = c.getString("user");
-//                user_comparativo.password = c.getString("senha");
-//
-//                if (user_comparativo.user == this.user_global.toString() && user_comparativo.password == user_global.password.toString() ){
-//
-//                    Intent call_activity_menu = new Intent(this.context, MenuActivity.class);
-//                    context.startActivity(call_activity_menu);
-//                }
-//                else{
-//                    Toast.makeText(this.context, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
-//                }
-//
-////                lista.add(u);
-//                //Toast.makeText(this, u.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        } catch ( IOException| JSONException e) {
-//            Log.e("ERRO", e.getMessage());
-//        }
-//    }
+
+//        Toast.makeText(this.context, "Usuário ou Senha Incorreto", Toast.LENGTH_SHORT).show();
+
+
+        try {
+            FileInputStream fis = this.context.openFileInput("usuarios.txt");
+
+            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+            StringBuilder sb = new StringBuilder();
+            String linha;
+
+            do{
+                linha = reader.readLine();
+                if (sb.length() != 0)
+                    sb.append('\n');
+                sb.append(linha);
+            }while(linha != null);
+
+            reader.close();
+            fis.close();
+
+            String jsonStr = sb.toString();
+            JSONObject jsonObj = new JSONObject(jsonStr);
+            JSONArray dados = jsonObj.getJSONArray("dados");
+
+            for (int i = 0; i < dados.length(); i++) {
+                JSONObject c = dados.getJSONObject(i);
+                Users user_comparativo = new Users();
+                user_comparativo.id = c.getInt("id");
+                user_comparativo.user  = c.getString("user");
+                user_comparativo.password = c.getString("senha");
+
+                if (user_comparativo.user.equals(user_p) && user_comparativo.password.equals(password_p) ){
+                    Intent call_activity_menu = new Intent(this.context, MenuActivity.class);
+                    context.startActivity(call_activity_menu);
+                }
+                else{
+                    Toast.makeText(this.context, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
+                }
+
+//                lista.add(u);
+                //Toast.makeText(this, u.toString(), Toast.LENGTH_SHORT).show();
+            }
+        } catch ( IOException| JSONException e) {
+            Log.e("ERRO", e.getMessage());
+        }
+    }
 
 
 

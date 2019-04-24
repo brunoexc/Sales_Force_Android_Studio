@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         user_controller.ReadUserOnFile(input_user, input_password);
 
+
     }
 
 }
