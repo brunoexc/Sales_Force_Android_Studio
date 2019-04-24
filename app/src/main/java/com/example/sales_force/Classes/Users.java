@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Users extends Activity {
+public class Users  {
 
     public int id;
     public String name;

@@ -54,24 +54,24 @@ public class CreateUserActivity extends AppCompatActivity {
         listaUsuarios = new ArrayList<Users>();
 
         get_name = (EditText) findViewById(R.id.txt_input_UserName);
-        input_name = get_name.toString();
+        input_name = get_name.getText().toString();
 
         get_user = (EditText) findViewById(R.id.txt_input_UserLogin);
-        input_user = get_user.toString();
+        input_user = get_user.getText().toString();
 
         get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
-        input_password = get_password.toString();
+        input_password = get_password.getText().toString();
 
-        listaUsuarios.add(new Users(1, input_name, input_user, input_password));
+//        listaUsuarios.add(new Users(1, input_name, input_user, input_password));
 
 
 //      listaUsuarios.add(new Usuario(1, input_name, input_user, input_password));
 
 
-        controller = new UserController();
-//        controller.SaveUserOnFile(1, input_name, input_user, input_password);
+        controller = new UserController(this);
+        controller.SaveUserOnFile(1, input_name, input_user, input_password);
 
-        controller.SaveUserOnFile(listaUsuarios);
+//        controller.SaveUserOnFile(listaUsuarios);
 
 
 

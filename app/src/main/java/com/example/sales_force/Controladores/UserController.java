@@ -13,8 +13,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -22,46 +25,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 
-public class UserController extends Users {
+public class UserController {
 
-    Users user;
+    Users user = new Users();
+    private Context context;
 
-    public UserController() {  }
+    public UserController(Context context) {
+        this.context = context;
+    }
 
-
-//    public void SaveUserOnFile (int id, String name, String user, String password)
-      public void SaveUserOnFile (ArrayList<Users> lista){
-
-//        this.user.id = id;
-//        this.user.name = name;
-//        this.user.user = user;
-//        this.user.password = password;
+    public void SaveUserOnFile (int id, String name, String user, String password){
+//      public void SaveUserOnFile (ArrayList<Users> lista){
 
 
-        Toast.makeText(this, "Cheguei no Método", Toast.LENGTH_SHORT).show();
+        this.user.id = id;
+        this.user.name = name;
+        this.user.user = user;
+        this.user.password = password;
+
+
+        Toast.makeText(this.context, "Cheguei no Método", Toast.LENGTH_SHORT).show();
 
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
-            for (Users u : lista) {
+//            for (Users u : lista) {
                 JSONObject obj = new JSONObject();
-//                obj.put("id", this.user.id);
-//                obj.put("nome", this.user.name);
-//                obj.put("nome", this.user.user);
-//                obj.put("senha", this.user.password);
+                obj.put("id", this.user.id);
+                obj.put("nome", this.user.name);
+                obj.put("nome", this.user.user);
+                obj.put("senha", this.user.password);
 
-                obj.put("id", u.id);
-                obj.put("nome", u.name);
-                obj.put("user", u.user);
-                obj.put("senha", u.password);
+//                obj.put("id", u.id);
+//                obj.put("nome", u.name);
+//                obj.put("user", u.user);
+//                obj.put("senha", u.password);
                 dados.put(obj);
-            }
+//            }
 
             jsonObj.put("Usuários:",dados);
 
-            FileOutputStream fos = openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
+            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
             PrintWriter writter = new PrintWriter(fos);
             writter.println(jsonObj.toString());
             writter.flush();
@@ -75,10 +81,44 @@ public class UserController extends Users {
     }
 
 
-    public void ReadUserOnFile (String usuario, String senha){
+//    public void ReadUserOnFile (String usuario, String senha){
+//
+//
+//        try {
+//            FileInputStream fis = this.context.openFileInput("usuarios.txt");
+//
+//            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+//            StringBuilder sb = new StringBuilder();
+//            String linha;
+//
+//            do{
+//                linha = reader.readLine();
+//                if (sb.length() != 0)
+//                    sb.append('\n');
+//                sb.append(linha);
+//            }while(linha != null);
+//
+//            reader.close();
+//            fis.close();
+//
+//            String jsonStr = sb.toString();
+//            JSONObject jsonObj = new JSONObject(jsonStr);
+//            JSONArray dados = jsonObj.getJSONArray("dados");
+//            for (int i = 0; i < dados.length(); i++) {
+//                JSONObject c = dados.getJSONObject(i);
+//                Users u = new Users();
+//                u.id = c.getInt("id");
+//                u.name  = c.getString("nome");
+//                u.password = c.getString("senha");
+//                lista.add(u);
+//                //Toast.makeText(this, u.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        } catch ( IOException| JSONException e) {
+//            Log.e("ERRO", e.getMessage());
+//        }
+//    }
 
 
-    }
 
 
 
