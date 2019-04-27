@@ -28,10 +28,10 @@
     <string name="txt_input_ClientEmail" />
     <string name="rad_ClientType_F">Física</string>
     <string name="rad_ClientType_J">Jurídica</string>
-    <string name="txt_ClientName">Nome:</string>
+    <string name="txt_ClientName">Nome *:</string>
     <string name="txt_input_ClientName" />
-    <string name="txt_ClientCPF">CPF:</string>
-    <string name="txt_ClientCNPJ">CNPJ:</string>
+    <string name="txt_ClientCPF">CPF *:</string>
+    <string name="txt_ClientCNPJ">CNPJ *:</string>
     <string name="txt_input_ClientCNPJ" />
     <string name="txt_subtitle1_Client">Dados Pessoais</string>
     <string name="txt_subtitle2_Client">Dados de Endereço</string>
@@ -66,4 +66,35 @@
     <string name="txt_subtitle_CreateNewOrder">Clique no Botão Acima para Registrar Novo Pedido</string>
     <string name="but_ClientOrderPayment">Pagamento</string>
     <string name="txt_cab_OrderID">Número do Pedido:</string>
+    <string-array name="combo_clientUF_str">
+
+        <item> "AC"</item>
+        <item> "AL"</item>
+        <item> "AP"</item>
+        <item> "AM"</item>
+        <item> "BA"</item>
+        <item> "CE"</item>
+        <item> "DF"</item>
+        <item> "ES"</item>
+        <item> "GO"</item>
+        <item> "MA"</item>
+        <item> "MT"</item>
+        <item> "MS"</item>
+        <item> "MG"</item>
+        <item> "PA"</item>
+        <item> "PB"</item>
+        <item> "PR"</item>
+        <item> "PE"</item>
+        <item> "PI"</item>
+        <item> "RR"</item>
+        <item> "RO"</item>
+        <item> "RJ"</item>
+        <item> "RN"</item>
+        <item> "RS"</item>
+        <item> "SC"</item>
+        <item> "SP"</item>
+        <item> "SE"</item>
+        <item> "TO"</item>
+
+    </string-array>
 </resources>

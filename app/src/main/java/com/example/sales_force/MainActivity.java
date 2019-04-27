@@ -22,12 +22,18 @@ public class MainActivity extends AppCompatActivity {
     public EditText get_user;
     public EditText get_password;
 
+    public String super_user;
+    public String super_password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        user_controller.SaveAdminOnFile();
+        super_user = "admin";
+        super_password = "admin";
+
+//        user_controller.SaveAdminOnFile();
     }
 
 
@@ -37,13 +43,11 @@ public class MainActivity extends AppCompatActivity {
         Intent call_activity_create_user = new Intent(this, CreateUserActivity.class);
         startActivity(call_activity_create_user);
 
+
     }
 
 
     public void OnClickbuttonAcessar (View view){
-
-
-
 
         get_user = (EditText) findViewById(R.id.txt_input_Login);
         input_user = get_user.getText().toString();
@@ -51,24 +55,34 @@ public class MainActivity extends AppCompatActivity {
         get_password = (EditText) findViewById(R.id.txt_input_Password);
         input_password = get_password.getText().toString();
 
-        Boolean validate_user = false;
+        if (input_user.equals(super_user) && input_password.equals(super_password)){
 
-        user_controller.ReadUserOnFile(input_user, input_password, validate_user);
-
-        if (validate_user == true){
-
+            Toast.makeText(this, "Bem vindo!", Toast.LENGTH_SHORT).show();
             Intent call_activity_menu = new Intent(this, MenuActivity.class);
             this.startActivity(call_activity_menu);
+
         }
         else{
 
-            Toast.makeText(this, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
+            Boolean validate_user = false;
+
+            validate_user = user_controller.ReadUserOnFile(input_user, input_password, validate_user);
+
+            if (validate_user == true){
+
+                Toast.makeText(this, "Bem vindo!", Toast.LENGTH_SHORT).show();
+                Intent call_activity_menu = new Intent(this, MenuActivity.class);
+                this.startActivity(call_activity_menu);
+            }
+            else{
+
+                Toast.makeText(this, "Usuário ou Senha Incorreto(s)", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
 
+
+
+
 }
-
-
-
-

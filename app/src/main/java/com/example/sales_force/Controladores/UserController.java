@@ -46,35 +46,31 @@ public class UserController {
         this.user_global.password = password;
 
 
-        Toast.makeText(this.context, "Cheguei no Método", Toast.LENGTH_SHORT).show();
-
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
-//            for (Users u : lista) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", this.user_global.id);
-                obj.put("nome", this.user_global.name);
-                obj.put("user", this.user_global.user);
-                obj.put("senha", this.user_global.password);
+            JSONObject obj = new JSONObject();
+            obj.put("id", this.user_global.id);
+            obj.put("nome", this.user_global.name);
+            obj.put("user", this.user_global.user);
+            obj.put("senha", this.user_global.password);
 
-//                obj.put("id", u.id);
-//                obj.put("nome", u.name);
-//                obj.put("user", u.user);
-//                obj.put("senha", u.password);
-                dados.put(obj);
+            dados.put(obj);
 //            }
 
-            jsonObj.put("Usuários:",dados);
+            jsonObj.put("usuarios",dados);
 
-            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
+            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_APPEND);
             PrintWriter writter = new PrintWriter(fos);
             writter.println(jsonObj.toString());
             writter.flush();
             writter.close();
             fos.close();
+
+
+            Toast.makeText(this.context, "Usuário Cadastrado", Toast.LENGTH_SHORT).show();
 
         } catch (IOException | JSONException e) {
             Log.e("ERRO", e.getMessage());
@@ -97,22 +93,19 @@ public class UserController {
 
             do{
                 linha = reader.readLine();
-                if (sb.length() != 0) {
+                if (sb.length() != 0)
                     sb.append('\n');
-                }else{
-                    Toast.makeText(this.context, "Arquivo Vazio", Toast.LENGTH_SHORT).show();
-                }
                 sb.append(linha);
             }while(linha != null);
+
 
             reader.close();
             fis.close();
 
+            //Log.i("TAG",sb.toString());
             String jsonStr = sb.toString();
             JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("dados");
-
-
+            JSONArray dados = jsonObj.getJSONArray("usuarios");
 
             for (int i = 0; i < dados.length(); i++) {
                 JSONObject c = dados.getJSONObject(i);
@@ -121,9 +114,18 @@ public class UserController {
                 user_comparativo.user  = c.getString("user");
                 user_comparativo.password = c.getString("senha");
 
-                if (user_comparativo.user.equals(user_p) && user_comparativo.password.equals(password_p) )
+                if (user_comparativo.user.equals(user_p) && user_comparativo.password.equals(password_p) ){
                     validate_user = true;
+                    return validate_user;
+                }
+                else{
+                    validate_user = false;
+                }
             }
+
+
+
+            return validate_user;
 
         } catch ( IOException| JSONException e) {
             Log.e("ERRO", e.getMessage());
@@ -153,7 +155,7 @@ public class UserController {
             obj.put("senha", admin_password);
             dados.put(obj);
 
-            jsonObj.put("Usuários",dados);
+            jsonObj.put("usuarios",dados);
 
             FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
             PrintWriter writter = new PrintWriter(fos);
@@ -169,4 +171,3 @@ public class UserController {
     }
 
 }
-
