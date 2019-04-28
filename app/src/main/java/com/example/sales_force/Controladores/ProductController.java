@@ -2,9 +2,12 @@ package com.example.sales_force.Controladores;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.example.sales_force.Classes.Clients;
+import com.example.sales_force.Classes.Products;
 import com.example.sales_force.Classes.Users;
+import com.example.sales_force.RegisterProduct;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,17 +20,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-public class ClientController {
+public class ProductController {
 
-    Clients client_global = new Clients();
+    Products global_product = new Products();
     private Context context;
 
-    public ClientController(Context context) {
+    public ProductController(Context context) {
         this.context = context;
     }
 
 
-    public void RegisterClient (int id, String name, String email, String phone, String cpf, String cnpj, String address, String district, String uf, String city, String cep, String juridica_fisica){
+    public void RegisterProduct (int id, String name, String um, String qtd_estoque, String status, String custo, String preco, int codigo_barras){
 
         try {
             JSONObject jsonObj = new JSONObject();
@@ -37,23 +40,18 @@ public class ClientController {
 
             obj.put("id", id);
             obj.put("nome", name);
-            obj.put("email", email);
-            obj.put("telefone", phone);
-            obj.put("cpf", cpf);
-            obj.put("cnpj", cnpj);
-            obj.put("address", address);
-            obj.put("district", district);
-            obj.put("uf", uf);
-            obj.put("city", city);
-            obj.put("cep", cep);
-            obj.put("tipo", juridica_fisica);
+            obj.put("unidade de medida", um);
+            obj.put("qtd estoque", qtd_estoque);
+            obj.put("custo", custo);
+            obj.put("preço", preco);
+            obj.put("código de barras", codigo_barras);
+            obj.put("status", status);
 
             dados.put(obj);
 
+            jsonObj.put("produtos:",dados);
 
-            jsonObj.put("clientes:",dados);
-
-            FileOutputStream fos = this.context.openFileOutput("clientes.txt", Context.MODE_APPEND);
+            FileOutputStream fos = this.context.openFileOutput("produtos.txt", Context.MODE_APPEND);
             PrintWriter writter = new PrintWriter(fos);
             writter.println(jsonObj.toString());
             writter.flush();
@@ -66,10 +64,12 @@ public class ClientController {
 
     }
 
-    public void ReadClientPersonalData(){
+
+
+    public void ReadProductsOnFile(){
 
         try {
-            FileInputStream fis = this.context.openFileInput("clientes.txt");
+            FileInputStream fis = this.context.openFileInput("produtos.txt");
 
             BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
             StringBuilder sb = new StringBuilder();
@@ -89,29 +89,33 @@ public class ClientController {
             //Log.i("TAG",sb.toString());
             String jsonStr = sb.toString();
             JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("clientes");
+            JSONArray dados = jsonObj.getJSONArray("produtos");
 
             for (int i = 0; i < dados.length(); i++) {
                 JSONObject c = dados.getJSONObject(i);
-                Clients client_comparativo = new Clients();
-                client_comparativo.id = c.getInt("id");
-                client_comparativo.name = c.getString("nome");
-                client_comparativo.email = c.getString("email");
-                client_comparativo.phone = c.getString("telefone");
-                client_comparativo.cpf = c.getString("cpf");
-                client_comparativo.cnpj = c.getString("cnpj");
-                client_comparativo.address = c.getString("address");
-                client_comparativo.district = c.getString("district");
-                client_comparativo.uf = c.getString("uf");
-                client_comparativo.city = c.getString("city");
-                client_comparativo.cep = c.getString("cep");
-                client_comparativo.juridica_fisica = c.getString("tipo");
+                Products product_comparativo = new Products();
+                product_comparativo.id = c.getInt("id");
+                product_comparativo.name = c.getString("nome");
+                product_comparativo.um = c.getString("unidade de medida");
+                product_comparativo.status = c.getString("status");
+                product_comparativo.custo = c.getString("custo");
+                product_comparativo.preco_venda = c.getString("preço");
+                product_comparativo.codigo_barras = c.getString("código de barras");
 
             }
 
         } catch ( IOException| JSONException e) {
             Log.e("ERRO", e.getMessage());
         }
+
+
     }
+
+
+
+
+
+
+
 
 }

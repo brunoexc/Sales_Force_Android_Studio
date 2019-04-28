@@ -37,25 +37,16 @@ public class UserController {
     }
 
     public void SaveUserOnFile (int id, String name, String user, String password){
-//      public void SaveUserOnFile (ArrayList<Users> lista){
-
-
-        this.user_global.id = id;
-        this.user_global.name = name;
-        this.user_global.user = user;
-        this.user_global.password = password;
-
-
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
             JSONObject obj = new JSONObject();
-            obj.put("id", this.user_global.id);
-            obj.put("nome", this.user_global.name);
-            obj.put("user", this.user_global.user);
-            obj.put("senha", this.user_global.password);
+            obj.put("id", id);
+            obj.put("nome", name);
+            obj.put("user", user);
+            obj.put("senha", password);
 
             dados.put(obj);
 //            }
@@ -69,20 +60,13 @@ public class UserController {
             writter.close();
             fos.close();
 
-
-            Toast.makeText(this.context, "Usuário Cadastrado", Toast.LENGTH_SHORT).show();
-
         } catch (IOException | JSONException e) {
             Log.e("ERRO", e.getMessage());
         }
 
     }
 
-
     public boolean ReadUserOnFile (String user_p, String password_p, Boolean validate_user){
-
-//        this.user_global.user = user_p;
-//        this.user_global.password = password_p;
 
         try {
             FileInputStream fis = this.context.openFileInput("usuarios.txt");
@@ -123,14 +107,11 @@ public class UserController {
                 }
             }
 
-
-
             return validate_user;
 
         } catch ( IOException| JSONException e) {
             Log.e("ERRO", e.getMessage());
         }
-
         return validate_user;
     }
 

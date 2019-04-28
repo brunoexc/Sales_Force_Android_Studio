@@ -31,8 +31,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    public void OnClickbuttonCriarPedido (View view){
+    public void OnClickbuttonEmDesenvolvimento (View view){
 
+        Toast.makeText(this, "EM DESENVOLVIMENTO", Toast.LENGTH_SHORT).show();
 
     }
 

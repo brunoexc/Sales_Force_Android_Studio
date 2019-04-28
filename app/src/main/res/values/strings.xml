@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">sales_force</string>
     <string name="txt_Header">Sales Force - Caride</string>
-    <string name="txt_Login">Usuário:</string>
+    <string name="txt_Login">Usuário *:</string>
     <string name="but_Login">Acessar</string>
     <string name="but_Create">Cadastrar</string>
     <string name="txt_sugest_NewUser">Ainda não possui usuário?</string>
@@ -9,8 +9,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="txt_UserName">Nome:</string>
-    <string name="txt_Password">Senha:</string>
+    <string name="txt_UserName">Nome *:</string>
+    <string name="txt_Password">Senha *:</string>
     <string name="txt_input_UserName" />
     <string name="txt_input_UserLogin" />
     <string name="txt_input_UserPassword" />
@@ -19,7 +19,7 @@
     <string name="txt_title_Menu">Menu Principal</string>
     <string name="but_RegisterClient">Cadastrar Cliente</string>
     <string name="but_RegisterProduct">Cadastrar Produto</string>
-    <string name="but_RegisterOrder">Criar Pedido</string>
+    <string name="but_RegisterOrder">Cadastrar Pedido</string>
     <string name="but_Return">Retornar</string>
     <string name="txt_title_ClientRegister">Cadastro de Cliente</string>
     <string name="txt_ClientEmail">Email:</string>
@@ -50,15 +50,15 @@
     <string name="but_RegisterUser">Cadastrar Usuário</string>
     <string name="txt_title_Welcome">Bem vindo!</string>
     <string name="txt_title_ProductRegister">Cadastro de Produto</string>
-    <string name="txt_ProductName">Nome:</string>
+    <string name="txt_ProductName">Nome *:</string>
     <string name="rad_Status_A">Ativo</string>
     <string name="rad_Status_D">Inativo</string>
-    <string name="txt_ProductUM">UM:</string>
-    <string name="txt_ProductStock">Quantidade Estoque:</string>
+    <string name="txt_ProductUM">UM *:</string>
+    <string name="txt_ProductStock">Quantidade Estoque *:</string>
     <string name="txt_input_ProductQTD" />
     <string name="txt_ProductCost">"Custo: "</string>
     <string name="txt_ProductCostUM">R$</string>
-    <string name="txt_ProductSalesCost">Preço Venda:</string>
+    <string name="txt_ProductSalesCost">Preço Venda *:</string>
     <string name="txt_ProductBarCode">Código de Barras</string>
     <string name="but_ProductRegister_end">Cadastrar</string>
     <string name="txt_title_ClientOrder">Cadastro de Pedido</string>
@@ -66,8 +66,18 @@
     <string name="txt_subtitle_CreateNewOrder">Clique no Botão Acima para Registrar Novo Pedido</string>
     <string name="but_ClientOrderPayment">Pagamento</string>
     <string name="txt_cab_OrderID">Número do Pedido:</string>
+    <string name="txt_input_ProductCost" />
+    <string name="txt_input_ProductSalesPrice" />
+    <string name="txt_input_ProductStock" />
+    <string name="txt_input_ProductName" />
+    <string name="rad_ProductStatus_A">Ativo</string>
+    <string name="rad_ProductStatus_I">Inativo</string>
+    <string name="txt_ProductStatus">Status do Produto *</string>
+    <string name="but_ClientMaintenance">Administrar Clientes</string>
+    <string name="but_ProductMaintenance">Administrar Produtos</string>
+    <string name="but_UserMaintenance">Administrar Usuários</string>
+    <string name="but_OrderMaintenance">Administrar Pedidos</string>
     <string-array name="combo_clientUF_str">
-
         <item> "AC"</item>
         <item> "AL"</item>
         <item> "AP"</item>
@@ -95,6 +105,25 @@
         <item> "SP"</item>
         <item> "SE"</item>
         <item> "TO"</item>
+    </string-array>
+
+    <string-array name="combo_ProductUM_str">
+
+        <item> "BOBINA"</item>
+        <item> "CARRINHO"</item>
+        <item> "CENTO"</item>
+        <item> "CX"</item>
+        <item> "DUZIA"</item>
+        <item> "FARDO"</item>
+        <item> "GALAO"</item>
+        <item> "GRAMAS"</item>
+        <item> "KG"</item>
+        <item> "LATA"</item>
+        <item> "LITRO"</item>
+        <item> "PACOTE"</item>
 
     </string-array>
+
+
+
 </resources>

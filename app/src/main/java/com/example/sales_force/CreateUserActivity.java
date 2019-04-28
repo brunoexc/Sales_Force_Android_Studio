@@ -34,6 +34,8 @@ public class CreateUserActivity extends AppCompatActivity {
     public EditText get_user;
     public EditText get_password;
 
+    Boolean valida_user;
+
 
     public ListView list_view;
     public ArrayAdapter<Users> adaptador;
@@ -43,6 +45,8 @@ public class CreateUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
+
+        valida_user = false;
 
     }
 
@@ -62,21 +66,32 @@ public class CreateUserActivity extends AppCompatActivity {
         get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
         input_password = get_password.getText().toString();
 
+        valida_user = verificaObrigatórios(input_name, input_user, input_password, valida_user);
 
-        controller = new UserController(this);
-        controller.SaveUserOnFile(1, input_name, input_user, input_password);
-
+        if (valida_user == true){
+            controller = new UserController(this);
+            controller.SaveUserOnFile(1, input_name, input_user, input_password);
+            Toast.makeText(this, "Usuário: "+ input_name.toUpperCase() + " cadastrado", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Favor Preencher Campos Obrigatórios(*)", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
 
+    public Boolean verificaObrigatórios(String name, String user, String password, Boolean valida){
 
-
-    public void OnClickbuttonCancelar (View view){
-
-        Intent call_activity_main = new Intent(this, MainActivity.class);
-        startActivity(call_activity_main);
+        if (name.trim().equals("") || user.trim().equals("") || password.trim().equals("") )
+        {
+            valida = false;
+        }
+        else{
+            valida = true;
+        }
+        return valida;
     }
+
 
 
 

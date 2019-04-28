@@ -15,7 +15,6 @@ import com.example.sales_force.Controladores.UserController;
 
 public class CreateClientActivity extends AppCompatActivity {
 
-
     public int input_id;
     public String input_name;
     public String input_email;
@@ -45,13 +44,7 @@ public class CreateClientActivity extends AppCompatActivity {
 
     public ClientController controller;
 
-
-
-
-
     Spinner combo_ClientUF;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,21 +65,10 @@ public class CreateClientActivity extends AppCompatActivity {
 
         get_cpf =  findViewById(R.id.txt_input_ClientCPF);
         get_cnpj = findViewById(R.id.txt_input_ClientCNPJ);
-
-
-
-
     }
 
 
     public void OnClickbuttonCadastrar (View view){
-
-//      input_id = findViewById(R.id.txt_input_User);
-
-//        listaUsuarios = new ArrayList<Users>();
-
-
-
 
         get_name = (EditText) findViewById(R.id.txt_input_ClientName);
         input_name = get_name.getText().toString();
@@ -145,7 +127,6 @@ public class CreateClientActivity extends AppCompatActivity {
         {
             Toast.makeText(getApplicationContext(), "Favor Preencher Campos Obrigatórios(*)", Toast.LENGTH_SHORT).show();
         }
-
 
     }
 
