@@ -14,7 +14,7 @@ import com.example.sales_force.Controladores.UserController;
 public class MainActivity extends AppCompatActivity {
 
 
-    UserController user_controller = new UserController(this);
+    UserController user_controller;
     public String input_name;
     public String input_user;
     public String input_password;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super_user = "admin";
         super_password = "admin";
 
+        user_controller = new UserController(this);
 //        user_controller.SaveAdminOnFile();
     }
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Bem vindo!", Toast.LENGTH_SHORT).show();
             Intent call_activity_menu = new Intent(this, MenuActivity.class);
             this.startActivity(call_activity_menu);
-
+            finish();
         }
         else{
 
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Bem vindo!", Toast.LENGTH_SHORT).show();
                 Intent call_activity_menu = new Intent(this, MenuActivity.class);
                 this.startActivity(call_activity_menu);
+                finish();
             }
             else{
 

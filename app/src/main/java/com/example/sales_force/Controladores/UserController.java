@@ -31,29 +31,75 @@ public class UserController {
 
     Users user_global = new Users();
     private Context context;
+    private ArrayList<Users> lista;
 
     public UserController(Context context) {
         this.context = context;
+
+        lista = new ArrayList<Users>();
+        carregarLista();
+    }
+
+    private void carregarLista() {
+        try {
+            FileInputStream fis = this.context.openFileInput("usuarios.txt");
+
+            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+            StringBuilder sb = new StringBuilder();
+            String linha;
+            do{
+                linha = reader.readLine();
+                if (sb.length() != 0)
+                    sb.append('\n');
+                sb.append(linha);
+            }while(linha != null);
+            reader.close();
+            fis.close();
+
+            //Log.i("TAG",sb.toString());
+            String jsonStr = sb.toString();
+            JSONObject jsonObj = new JSONObject(jsonStr);
+            JSONArray dados = jsonObj.getJSONArray("usuarios");
+
+            for (int i = 0; i < dados.length(); i++) {
+                JSONObject c = dados.getJSONObject(i);
+                Users usuario = new Users();
+                usuario.id = c.getInt("id");
+                usuario.name = c.getString("nome");
+                usuario.user  = c.getString("user");
+                usuario.password = c.getString("senha");
+                lista.add(usuario);
+            }
+
+        } catch ( IOException| JSONException e) {
+            Log.e("ERRO", e.getMessage());
+        }
     }
 
     public void SaveUserOnFile (int id, String name, String user, String password){
+
+        Users usuario = new Users();
+        usuario.id = id;
+        usuario.name = name;
+        usuario.user  = user;
+        usuario.password = password;
+        lista.add(usuario);
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
-            JSONObject obj = new JSONObject();
-            obj.put("id", id);
-            obj.put("nome", name);
-            obj.put("user", user);
-            obj.put("senha", password);
-
-            dados.put(obj);
-//            }
-
+            for (Users u : lista) {
+                JSONObject obj = new JSONObject();
+                obj.put("id", u.id);
+                obj.put("nome", u.name);
+                obj.put("user", u.user);
+                obj.put("senha", u.password);
+                dados.put(obj);
+            }
             jsonObj.put("usuarios",dados);
 
-            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_APPEND);
+            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
             PrintWriter writter = new PrintWriter(fos);
             writter.println(jsonObj.toString());
             writter.flush();
@@ -113,42 +159,6 @@ public class UserController {
             Log.e("ERRO", e.getMessage());
         }
         return validate_user;
-    }
-
-
-
-    public void SaveAdminOnFile (){
-
-        int admin_id = 0;
-        String admin_name = "Admin Caride";
-        String admin_user = "admin";
-        String admin_password = "admin";
-
-        try {
-            JSONObject jsonObj = new JSONObject();
-            JSONArray dados = new JSONArray();
-
-            JSONObject obj = new JSONObject();
-
-            obj.put("id", admin_id);
-            obj.put("nome", admin_name);
-            obj.put("user", admin_user);
-            obj.put("senha", admin_password);
-            dados.put(obj);
-
-            jsonObj.put("usuarios",dados);
-
-            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
-            PrintWriter writter = new PrintWriter(fos);
-            writter.println(jsonObj.toString());
-            writter.flush();
-            writter.close();
-            fos.close();
-
-        } catch (IOException | JSONException e) {
-            Log.e("ERRO", e.getMessage());
-        }
-
     }
 
 }

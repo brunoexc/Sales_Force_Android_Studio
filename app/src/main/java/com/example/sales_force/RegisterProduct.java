@@ -69,13 +69,10 @@ public class RegisterProduct extends AppCompatActivity {
 
     public void OnClickbuttonCadastrar (View view){
 
-
         incrementNumber();
         input_id = getNumber();
 
         random_codigo_barra = new Random().nextInt(9000000) + 1000000; // [0, 9000000] + 1000000 => [1000000, 10000000]
-
-
 
         get_name = (EditText) findViewById(R.id.txt_input_ProductName);
         input_name = get_name.getText().toString();
@@ -102,6 +99,7 @@ public class RegisterProduct extends AppCompatActivity {
             controller = new ProductController(this);
             controller.RegisterProduct(input_id, input_name, input_um, input_qtd_estoque, input_status, input_custo, input_preco_venda, input_codigo_barras);
             Toast.makeText(this, "Produto: "+ input_name + " cadastrado", Toast.LENGTH_SHORT).show();
+            finish();
         }
         else
         {

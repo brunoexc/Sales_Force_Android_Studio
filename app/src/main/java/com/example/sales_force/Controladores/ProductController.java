@@ -19,35 +19,95 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class ProductController {
 
-    Products global_product = new Products();
     private Context context;
+    private ArrayList<Products> lista;
 
     public ProductController(Context context) {
+
         this.context = context;
+
+        lista = new ArrayList<Products>();
+        carregarLista();
     }
 
 
-    public void RegisterProduct (int id, String name, String um, String qtd_estoque, String status, String custo, String preco, int codigo_barras){
+    private void carregarLista() {
+        try {
+            FileInputStream fis = this.context.openFileInput("clientes.txt");
+
+            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+            StringBuilder sb = new StringBuilder();
+            String linha;
+            do{
+                linha = reader.readLine();
+                if (sb.length() != 0)
+                    sb.append('\n');
+                sb.append(linha);
+            }while(linha != null);
+            reader.close();
+            fis.close();
+
+            //Log.i("TAG",sb.toString());
+            String jsonStr = sb.toString();
+            JSONObject jsonObj = new JSONObject(jsonStr);
+            JSONArray dados = jsonObj.getJSONArray("clientes");
+
+            for (int i = 0; i < dados.length(); i++) {
+                JSONObject c = dados.getJSONObject(i);
+                Products product_comparativo = new Products();
+                product_comparativo.id = c.getInt("id");
+                product_comparativo.name = c.getString("nome");
+                product_comparativo.um = c.getString("unidade medida");
+                product_comparativo.qtd_estoque = c.getString("qtd em estoque");
+                product_comparativo.custo = c.getString("custo");
+                product_comparativo.preco_venda = c.getString("preço venda");
+                product_comparativo.codigo_barras = c.getString("código barras");
+                product_comparativo.status = c.getString("status produto");
+
+
+                lista.add(product_comparativo);
+            }
+
+        } catch ( IOException| JSONException e) {
+            Log.e("ERRO", e.getMessage());
+        }
+    }
+
+
+    public void RegisterProduct (int id, String name, String um, String qtd_estoque, String status, String custo, String preco, String codigo_barras){
+
+        Products produto = new Products();
+        produto.id = id;
+        produto.name = name;
+        produto.um = um;
+        produto.qtd_estoque = qtd_estoque;
+        produto.status = status;
+        produto.custo = custo;
+        produto.preco_venda = preco;
+        produto.codigo_barras = codigo_barras;
+        lista.add(produto);
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
+            for (Products p : lista) {
             JSONObject obj = new JSONObject();
 
-            obj.put("id", id);
-            obj.put("nome", name);
-            obj.put("unidade de medida", um);
-            obj.put("qtd estoque", qtd_estoque);
-            obj.put("custo", custo);
-            obj.put("preço", preco);
-            obj.put("código de barras", codigo_barras);
-            obj.put("status", status);
-
+            obj.put("id", p.id);
+            obj.put("nome", p.name);
+            obj.put("unidade medida", p.um);
+            obj.put("qtd em estoque", p.qtd_estoque);
+            obj.put("custo", p.custo);
+            obj.put("preço venda", p.preco_venda);
+            obj.put("código de barras", p.codigo_barras);
+            obj.put("status", p.status);
             dados.put(obj);
+            }
 
             jsonObj.put("produtos:",dados);
 
@@ -63,6 +123,8 @@ public class ProductController {
         }
 
     }
+
+
 
 
 

@@ -68,15 +68,15 @@ public class CreateUserActivity extends AppCompatActivity {
 
         valida_user = verificaObrigatórios(input_name, input_user, input_password, valida_user);
 
-        if (valida_user == true){
+        if (valida_user){
             controller = new UserController(this);
             controller.SaveUserOnFile(1, input_name, input_user, input_password);
             Toast.makeText(this, "Usuário: "+ input_name.toUpperCase() + " cadastrado", Toast.LENGTH_SHORT).show();
+            finish();
         }
         else{
             Toast.makeText(getApplicationContext(), "Favor Preencher Campos Obrigatórios(*)", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 
