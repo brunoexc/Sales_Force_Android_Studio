@@ -9,7 +9,7 @@ public class Products {
     public String status;
     public String custo;
     public String preco_venda;
-    public String codigo_barras;
+    public int codigo_barras;
 
 
     public Products(){

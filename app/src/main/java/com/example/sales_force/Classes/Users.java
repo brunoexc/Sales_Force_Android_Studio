@@ -22,7 +22,6 @@ public class Users  {
     public String user;
     public String password;
 
-
     public Users() {}
 
 
@@ -34,15 +33,10 @@ public class Users  {
     }
 
     @Override
-
     public String toString() {
 
-        return "Usuario{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", user='" + user + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        String print = "id - " + String.valueOf(id) + " - " + String.valueOf(name);
+        return print;
     }
 
 

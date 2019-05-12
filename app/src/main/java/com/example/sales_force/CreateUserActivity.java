@@ -53,9 +53,6 @@ public class CreateUserActivity extends AppCompatActivity {
 
     public void OnClickbuttonCadastrar (View view){
 
-//      input_id = findViewById(R.id.txt_input_User);
-
-//        listaUsuarios = new ArrayList<Users>();
 
         get_name = (EditText) findViewById(R.id.txt_input_UserName);
         input_name = get_name.getText().toString();

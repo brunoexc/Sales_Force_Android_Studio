@@ -77,6 +77,21 @@
     <string name="but_ProductMaintenance">Administrar Produtos</string>
     <string name="but_UserMaintenance">Administrar Usuários</string>
     <string name="but_OrderMaintenance">Administrar Pedidos</string>
+    <string name="but_Save">Salvar</string>
+    <string name="txt_title_UserEdit">Editar Cadastro</string>
+    <string name="but_UA_Edit">Editar</string>
+    <string name="but_UA_Delete">Deletar</string>
+    <string name="txt_subtitle_UserSelect">Usuário Selecionado</string>
+    <string name="txt_input_UA_SelectedName" />
+    <string name="txt_title_UA_UserMaintenance">Manutenção de Usuário</string>
+    <string name="txt_subtitle_UA_UserList">Lista de Usuários</string>
+    <string name="but_UA_Atualizar">Atualizar Lista</string>
+    <string name="txt_subtitle_CA_ClientSelect">Cliente Selecionado</string>
+    <string name="txt_subtitle_CA_ClientList">Lista de Clientes</string>
+    <string name="txt_LUL_ClientID" />
+    <string name="txt_title_UA_ClientMaintenance2">Manutenção de Clientes</string>
+    <string name="but_CA_Edit">Editar</string>
+    <string name="but_CA_Delete">Deletar</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>
@@ -123,7 +138,6 @@
         <item> "PACOTE"</item>
 
     </string-array>
-
 
 
 </resources>

@@ -65,9 +65,8 @@ public class ProductController {
                 product_comparativo.qtd_estoque = c.getString("qtd em estoque");
                 product_comparativo.custo = c.getString("custo");
                 product_comparativo.preco_venda = c.getString("preço venda");
-                product_comparativo.codigo_barras = c.getString("código barras");
+                product_comparativo.codigo_barras = c.getInt("código barras");
                 product_comparativo.status = c.getString("status produto");
-
 
                 lista.add(product_comparativo);
             }
@@ -78,7 +77,7 @@ public class ProductController {
     }
 
 
-    public void RegisterProduct (int id, String name, String um, String qtd_estoque, String status, String custo, String preco, String codigo_barras){
+    public void RegisterProduct (int id, String name, String um, String qtd_estoque, String status, String custo, String preco, int codigo_barras){
 
         Products produto = new Products();
         produto.id = id;
@@ -162,7 +161,7 @@ public class ProductController {
                 product_comparativo.status = c.getString("status");
                 product_comparativo.custo = c.getString("custo");
                 product_comparativo.preco_venda = c.getString("preço");
-                product_comparativo.codigo_barras = c.getString("código de barras");
+                product_comparativo.codigo_barras = c.getInt("código de barras");
 
             }
 

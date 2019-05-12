@@ -1,15 +1,9 @@
 package com.example.sales_force.Controladores;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.sales_force.Classes.Users;
-import com.example.sales_force.CreateUserActivity;
-import com.example.sales_force.MenuActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,24 +17,18 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-
 public class UserController {
 
-    Users user_global = new Users();
     private Context context;
-    private ArrayList<Users> lista;
+    public ArrayList<Users> lista;
 
     public UserController(Context context) {
         this.context = context;
-
-        lista = new ArrayList<Users>();
+        lista = new ArrayList<>();
         carregarLista();
     }
 
-    private void carregarLista() {
+    public void carregarLista() {
         try {
             FileInputStream fis = this.context.openFileInput("usuarios.txt");
 
@@ -61,6 +49,7 @@ public class UserController {
             JSONObject jsonObj = new JSONObject(jsonStr);
             JSONArray dados = jsonObj.getJSONArray("usuarios");
 
+            lista.clear();
             for (int i = 0; i < dados.length(); i++) {
                 JSONObject c = dados.getJSONObject(i);
                 Users usuario = new Users();
@@ -90,12 +79,12 @@ public class UserController {
             JSONArray dados = new JSONArray();
 
             for (Users u : lista) {
-                JSONObject obj = new JSONObject();
-                obj.put("id", u.id);
-                obj.put("nome", u.name);
-                obj.put("user", u.user);
-                obj.put("senha", u.password);
-                dados.put(obj);
+              JSONObject obj = new JSONObject();
+              obj.put("id", u.id);
+              obj.put("nome", u.name);
+              obj.put("user", u.user);
+              obj.put("senha", u.password);
+              dados.put(obj);
             }
             jsonObj.put("usuarios",dados);
 
@@ -127,7 +116,6 @@ public class UserController {
                     sb.append('\n');
                 sb.append(linha);
             }while(linha != null);
-
 
             reader.close();
             fis.close();

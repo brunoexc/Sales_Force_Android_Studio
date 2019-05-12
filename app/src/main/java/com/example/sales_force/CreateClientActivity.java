@@ -100,14 +100,14 @@ public class CreateClientActivity extends AppCompatActivity {
 
             get_cpf = (EditText) findViewById(R.id.txt_input_ClientCPF);
             input_cpf = get_cpf.getText().toString();
-            input_cnpj = "cliente juridico";
+            input_cnpj = "cliente fisico";
 
         }
         else if (valida_cnpj == true){
 
             get_cnpj = (EditText) findViewById(R.id.txt_input_ClientCNPJ);
             input_cnpj = get_cnpj.getText().toString();
-            input_cpf = "cliente fisico";
+            input_cpf = "cliente juridico";
         }
         else if (valida_cpf == false && valida_cnpj == false){
             input_cnpj = "";
@@ -122,12 +122,12 @@ public class CreateClientActivity extends AppCompatActivity {
             controller = new ClientController(this);
             controller.RegisterClient(1, input_name, input_email, input_phone, input_cpf, input_cnpj, input_address, input_district, input_uf, input_city, input_cep, input_juridica_fisica );
             Toast.makeText(this, "Cliente "+ input_name + " cadastrado", Toast.LENGTH_SHORT).show();
+            finish();
         }
         else
         {
             Toast.makeText(getApplicationContext(), "Favor Preencher Campos Obrigatórios(*)", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -163,8 +163,6 @@ public class CreateClientActivity extends AppCompatActivity {
         }
 
     }
-
-
 
     public Boolean verificaObrigatórios(String name, String juri_fisi, String cpf, String cnpj, Boolean valida){
 

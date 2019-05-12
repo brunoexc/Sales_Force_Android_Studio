@@ -38,6 +38,20 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
+    public void OnClickbuttonAdministarUsuario (View view){
+
+        Intent call_activity_adminstrate_user = new Intent(this, UserAdministrationActivity.class);
+        startActivity(call_activity_adminstrate_user);
+
+    }
+
+    public void OnClickbuttonAdministarCliente (View view){
+
+        Intent call_activity_adminstrate_client = new Intent(this, ClientAdministrationActivity.class);
+        startActivity(call_activity_adminstrate_client);
+    }
+
+
     public void OnClickbuttonCadastrarUsuario (View view){
 
         Intent call_activity_create_user = new Intent(this, CreateUserActivity.class);

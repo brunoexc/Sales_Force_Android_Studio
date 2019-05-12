@@ -20,4 +20,11 @@ public class Clients {
 
     public Clients() {}
 
+    @Override
+    public String toString() {
+
+        String print = "id - " + String.valueOf(id) + " - " + String.valueOf(name);
+        return print;
+    }
+
 }

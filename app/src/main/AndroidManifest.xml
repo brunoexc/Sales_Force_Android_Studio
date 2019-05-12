@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterOrder"></activity>
+        <activity android:name=".ProductAdministrationActivity"></activity>
+        <activity android:name=".ClientAdministrationActivity" />
+        <activity android:name=".EditUserActivity" />
+        <activity android:name=".UserAdministrationActivity" />
+        <activity android:name=".RegisterOrder" />
         <activity android:name=".RegisterProduct" />
         <activity android:name=".CreateClientActivity" />
         <activity android:name=".MenuActivity" />
