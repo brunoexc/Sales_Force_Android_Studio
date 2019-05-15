@@ -42,8 +42,15 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent call_activity_adminstrate_user = new Intent(this, UserAdministrationActivity.class);
         startActivity(call_activity_adminstrate_user);
-
     }
+
+
+    public void OnClickbuttonAdministarProduto (View view){
+
+        Intent call_activity_adminstrate_product = new Intent(this, ProductAdministrationActivity.class);
+        startActivity(call_activity_adminstrate_product);
+    }
+
 
     public void OnClickbuttonAdministarCliente (View view){
 

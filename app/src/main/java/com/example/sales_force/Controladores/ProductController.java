@@ -2,12 +2,8 @@ package com.example.sales_force.Controladores;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.EditText;
 
-import com.example.sales_force.Classes.Clients;
 import com.example.sales_force.Classes.Products;
-import com.example.sales_force.Classes.Users;
-import com.example.sales_force.RegisterProduct;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,20 +20,18 @@ import java.util.ArrayList;
 public class ProductController {
 
     private Context context;
-    private ArrayList<Products> lista;
+    public ArrayList<Products> lista_produto;
 
     public ProductController(Context context) {
 
         this.context = context;
-
-        lista = new ArrayList<Products>();
+        lista_produto = new ArrayList<Products>();
         carregarLista();
     }
 
-
     private void carregarLista() {
         try {
-            FileInputStream fis = this.context.openFileInput("clientes.txt");
+            FileInputStream fis = this.context.openFileInput("produtos.txt");
 
             BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
             StringBuilder sb = new StringBuilder();
@@ -54,7 +48,7 @@ public class ProductController {
             //Log.i("TAG",sb.toString());
             String jsonStr = sb.toString();
             JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("clientes");
+            JSONArray dados = jsonObj.getJSONArray("produtos");
 
             for (int i = 0; i < dados.length(); i++) {
                 JSONObject c = dados.getJSONObject(i);
@@ -67,8 +61,7 @@ public class ProductController {
                 product_comparativo.preco_venda = c.getString("preço venda");
                 product_comparativo.codigo_barras = c.getInt("código barras");
                 product_comparativo.status = c.getString("status produto");
-
-                lista.add(product_comparativo);
+                lista_produto.add(product_comparativo);
             }
 
         } catch ( IOException| JSONException e) {
@@ -88,13 +81,13 @@ public class ProductController {
         produto.custo = custo;
         produto.preco_venda = preco;
         produto.codigo_barras = codigo_barras;
-        lista.add(produto);
+        lista_produto.add(produto);
 
         try {
             JSONObject jsonObj = new JSONObject();
             JSONArray dados = new JSONArray();
 
-            for (Products p : lista) {
+            for (Products p : lista_produto) {
             JSONObject obj = new JSONObject();
 
             obj.put("id", p.id);
@@ -108,7 +101,7 @@ public class ProductController {
             dados.put(obj);
             }
 
-            jsonObj.put("produtos:",dados);
+            jsonObj.put("produtos",dados);
 
             FileOutputStream fos = this.context.openFileOutput("produtos.txt", Context.MODE_APPEND);
             PrintWriter writter = new PrintWriter(fos);
@@ -122,9 +115,6 @@ public class ProductController {
         }
 
     }
-
-
-
 
 
     public void ReadProductsOnFile(){
@@ -142,7 +132,6 @@ public class ProductController {
                     sb.append('\n');
                 sb.append(linha);
             }while(linha != null);
-
 
             reader.close();
             fis.close();
@@ -162,21 +151,11 @@ public class ProductController {
                 product_comparativo.custo = c.getString("custo");
                 product_comparativo.preco_venda = c.getString("preço");
                 product_comparativo.codigo_barras = c.getInt("código de barras");
-
             }
 
         } catch ( IOException| JSONException e) {
             Log.e("ERRO", e.getMessage());
         }
-
-
     }
-
-
-
-
-
-
-
 
 }

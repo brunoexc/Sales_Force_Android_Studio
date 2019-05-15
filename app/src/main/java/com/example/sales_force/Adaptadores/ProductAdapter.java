@@ -7,33 +7,34 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.sales_force.Classes.Products;
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.R;
 
 import java.util.List;
 
-public class UserAdapter extends ArrayAdapter<Users>{
+public class ProductAdapter extends ArrayAdapter<Products>{
 
     TextView txt_user_id;
     TextView txt_user_name;
 
-    public UserAdapter(Context context, List<Users> objects) {
+    public ProductAdapter(Context context, List<Products> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Users usuario = getItem(position);
+        Products produtos = getItem(position);
 
         if (convertView == null)
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_user_list, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_product_list, parent, false);
 
         txt_user_id = (TextView) convertView.findViewById(R.id.txt_LUL_UserID);
         txt_user_name = (TextView) convertView.findViewById(R.id.txt_LUL_UserName);
 
-        txt_user_id.setText(String.valueOf(usuario.id + " - "));
-        txt_user_name.setText(usuario.name);
+        txt_user_id.setText(String.valueOf(produtos.id + " - "));
+        txt_user_name.setText(produtos.name);
 
         return convertView;
     }

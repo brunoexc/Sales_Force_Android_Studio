@@ -111,7 +111,7 @@ public class ClientController {
               obj.put("tipo", c.juridica_fisica);
               dados.put(obj);
             }
-            jsonObj.put("clientes:",dados);
+            jsonObj.put("clientes",dados);
 
             FileOutputStream fos = this.context.openFileOutput("clientes.txt", Context.MODE_PRIVATE);
             PrintWriter writter = new PrintWriter(fos);
