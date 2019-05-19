@@ -2,9 +2,11 @@ package com.example.sales_force;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -13,60 +15,76 @@ import android.widget.Toast;
 import com.example.sales_force.Controladores.ClientController;
 import com.example.sales_force.Controladores.UserController;
 
-public class CreateClientActivity extends AppCompatActivity {
+public class CreateClientActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public int input_id;
-    public String input_name;
-    public String input_email;
-    public String input_phone;
-    public String input_cpf;
-    public String input_cnpj;
-    public String input_address;
-    public String input_district;
-    public String input_uf;
-    public String input_city;
-    public String input_cep;
-    public String input_juridica_fisica;
+    public int input_id, cad_edi;
+    public String input_name, input_email,input_phone, input_cpf, input_cnpj, input_address, input_district, input_uf, input_city, input_cep, input_juridica_fisica;
+    Boolean valida_obrigatorio,valida_cpf,valida_cnpj;
 
-    Boolean valida_obrigatorio;
-    Boolean valida_cpf;
-    Boolean valida_cnpj;
-
-    public EditText get_name;
-    public EditText get_email;
-    public EditText get_phone;
-    public EditText get_cpf;
-    public EditText get_cnpj;
-    public EditText get_address;
-    public EditText get_district;
-    public EditText get_city;
-    public EditText get_cep;
+    public EditText get_name, get_email, get_phone, get_cpf, get_cnpj, get_address, get_district, get_city, get_cep;
+    public Button troca_botao;
+    Spinner combo_ClientUF;
 
     public ClientController controller;
-
-    Spinner combo_ClientUF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_client);
+        Intent intent = getIntent();
 
+        //Tratar campos obrigatórios
         input_juridica_fisica = "";
         valida_obrigatorio = false;
         valida_cpf = false;
         valida_cnpj = false;
 
+        //Tratar tela para receber cadastro ou edição de cliente
+        cad_edi = intent.getIntExtra("cad_edi", 0);
+        troca_botao = findViewById(R.id.but_RegisterClient);
+        troca_botao.setOnClickListener(this);
+        botaoCadastroEditar();
+
+        //Criar combo box para os estados no cadastro
         combo_ClientUF = (Spinner) findViewById(R.id.combo_ClientUF);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_clientUF_str, android.R.layout.simple_spinner_item);
         combo_ClientUF.setAdapter(adapter);
 
+        //Tratar campos CPF e CNPJ (Inicializar como não modificavel até a pessoa selecionar um radio)
         findViewById(R.id.txt_input_ClientCPF).setFocusable(false);
         findViewById(R.id.txt_input_ClientCNPJ).setFocusable(false);
-
         get_cpf =  findViewById(R.id.txt_input_ClientCPF);
         get_cnpj = findViewById(R.id.txt_input_ClientCNPJ);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (cad_edi){
+            //cad_edi = 0 (Significa que estou querendo cadastrar)
+            case 0:
+                OnClickbuttonCadastrar(v);
+                break;
+
+            //cad_edi = 1 (Significa que estou querendo editar um cadastro)
+            case 1:
+                Teste();
+                break;
+        }
+    }
+
+    public void botaoCadastroEditar(){
+
+        if(cad_edi == 0){
+            troca_botao.setText("Cadastrar");
+        }else{
+            troca_botao.setText("Salvar");
+        }
+    }
+
+    public void Teste(){
+
+        Toast.makeText(this, "Chamei o método TESTE ", Toast.LENGTH_SHORT).show();
+    }
 
     public void OnClickbuttonCadastrar (View view){
 

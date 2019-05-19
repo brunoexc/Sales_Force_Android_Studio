@@ -2,8 +2,10 @@ package com.example.sales_force;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-        import android.os.Bundle;
-        import android.widget.ListView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
         import com.example.sales_force.Adaptadores.ProductAdapter;
         import com.example.sales_force.Controladores.ProductController;
@@ -24,6 +26,15 @@ public class ProductAdministrationActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_Products);
         adapter = new ProductAdapter(this, controller.lista_produto);
         listView.setAdapter(adapter);
+    }
+
+
+    public void OnClickbuttonEditarProdutos (View view){
+
+        Intent ca_register_product = new Intent(this, RegisterProduct.class);
+        ca_register_product.putExtra("cad_edi", 1);
+        startActivity(ca_register_product);
+
     }
 
 

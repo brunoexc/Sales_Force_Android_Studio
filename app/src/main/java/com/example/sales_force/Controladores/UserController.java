@@ -32,8 +32,6 @@ public class UserController {
         carregarLista();
     }
 
-
-
     public void carregarLista() {
         try {
             FileInputStream fis = this.context.openFileInput("usuarios.txt");

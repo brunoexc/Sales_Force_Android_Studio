@@ -14,7 +14,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ProductAdministrationActivity"></activity>
         <activity android:name=".ClientAdministrationActivity" />
-        <activity android:name=".EditUserActivity" />
         <activity android:name=".UserAdministrationActivity" />
         <activity android:name=".RegisterOrder" />
         <activity android:name=".RegisterProduct" />

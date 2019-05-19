@@ -106,14 +106,14 @@
 
                 <Spinner
                     android:id="@+id/combo_ProductUM"
-                    android:layout_width="70dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:spinnerMode="dropdown" />
 
                 <TextView
                     android:id="@+id/txt_ProductStock"
-                    android:layout_width="170dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="@string/txt_ProductStock"
@@ -206,7 +206,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="179dp"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
                             android:orientation="horizontal">
@@ -259,7 +259,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/but_ProductRegister_end"
+                android:id="@+id/but_ProductRegister"
                 android:layout_width="186dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="80dp"
@@ -267,7 +267,7 @@
                 android:layout_marginEnd="80dp"
                 android:layout_weight="1"
                 android:onClick="OnClickbuttonCadastrar"
-                android:text="@string/but_ProductRegister_end"
+                android:text="@string/but_ProductRegister"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.492"

@@ -49,15 +49,15 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
-
         Intent intent = getIntent();
-        cad_edi = intent.getIntExtra("cad_edi", 0);
 
+        //Tratar tela para receber cadastro ou edição de usuários
+        cad_edi = intent.getIntExtra("cad_edi", 0);
         troca_botao = findViewById(R.id.but_Register);
+        troca_botao.setOnClickListener(this);
         botaoCadastroEditar();
 
-        troca_botao.setOnClickListener(this);
-
+        //Tratar campos obrigatórios
         valida_user = false;
     }
 

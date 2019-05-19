@@ -463,14 +463,14 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/but_Register"
+                android:id="@+id/but_RegisterClient"
                 android:layout_width="158dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="124dp"
                 android:layout_marginTop="12dp"
                 android:layout_weight="1"
                 android:onClick="OnClickbuttonCadastrar"
-                android:text="@string/but_Create"
+                android:text="@string/but_RegisterClient"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />

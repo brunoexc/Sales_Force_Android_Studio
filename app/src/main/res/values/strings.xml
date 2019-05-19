@@ -17,7 +17,7 @@
     <string name="txt_title_UserRegister">Cadastro de Usuário</string>
     <string name="but_Cancel">Cancelar</string>
     <string name="txt_title_Menu">Menu Principal</string>
-    <string name="but_RegisterClient">Cadastrar Cliente</string>
+    <string name="but_RegisterClient">Cadastrar</string>
     <string name="but_RegisterProduct">Cadastrar Produto</string>
     <string name="but_RegisterOrder">Cadastrar Pedido</string>
     <string name="but_Return">Retornar</string>
@@ -54,7 +54,7 @@
     <string name="rad_Status_A">Ativo</string>
     <string name="rad_Status_D">Inativo</string>
     <string name="txt_ProductUM">UM *:</string>
-    <string name="txt_ProductStock">Quantidade Estoque *:</string>
+    <string name="txt_ProductStock">Qtd Estoque *:</string>
     <string name="txt_input_ProductQTD" />
     <string name="txt_ProductCost">"Custo: "</string>
     <string name="txt_ProductCostUM">R$</string>
@@ -96,6 +96,8 @@
     <string name="txt_title_PA_ProductMaintenance">Manutenção de Produtos</string>
     <string name="txt_subtitle_PA_ProductList">Lista de Produtos</string>
     <string name="but_EditUser">Salvar</string>
+    <string name="but_ProductRegister">Cadastrar</string>
+    <string name="but_RegisterClient_menu">Cadastrar Cliente</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>
@@ -127,20 +129,11 @@
     </string-array>
 
     <string-array name="combo_ProductUM_str">
-
-        <item> "BOBINA"</item>
-        <item> "CARRINHO"</item>
-        <item> "CENTO"</item>
+        <item> "UN"</item>
         <item> "CX"</item>
-        <item> "DUZIA"</item>
-        <item> "FARDO"</item>
-        <item> "GALAO"</item>
-        <item> "GRAMAS"</item>
         <item> "KG"</item>
-        <item> "LATA"</item>
-        <item> "LITRO"</item>
-        <item> "PACOTE"</item>
-
+        <item> "LT"</item>
+        <item> "ML"</item>
     </string-array>
 
 

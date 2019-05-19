@@ -15,35 +15,36 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
-
     public void OnClickbuttonCadastrarCliente (View view){
 
-        Intent call_activity_create_client = new Intent(this, CreateClientActivity.class);
-        startActivity(call_activity_create_client);
+        Intent ca_create_client = new Intent(this, CreateClientActivity.class);
+        ca_create_client.putExtra("cad_edi", 0);
+        startActivity(ca_create_client);
     }
-
 
     public void OnClickbuttonCadastrarProduto (View view){
 
-        Intent call_activity_register_product = new Intent(this, RegisterProduct.class);
-        startActivity(call_activity_register_product);
-
+        Intent ca_register_product = new Intent(this, RegisterProduct.class);
+        ca_register_product.putExtra("cad_edi", 0);
+        startActivity(ca_register_product);
     }
 
+    public void OnClickbuttonCadastrarUsuario (View view){
+
+        Intent ca_create_user = new Intent(this, CreateUserActivity.class);
+        ca_create_user.putExtra("cad_edi", 0);
+        startActivity(ca_create_user);
+    }
 
     public void OnClickbuttonEmDesenvolvimento (View view){
-
         Toast.makeText(this, "EM DESENVOLVIMENTO", Toast.LENGTH_SHORT).show();
-
     }
-
 
     public void OnClickbuttonAdministarUsuario (View view){
 
-        Intent call_activity_adminstrate_user = new Intent(this, UserAdministrationActivity.class);
-        startActivity(call_activity_adminstrate_user);
+        Intent ca_adminstrate_user = new Intent(this, UserAdministrationActivity.class);
+        startActivity(ca_adminstrate_user);
     }
-
 
     public void OnClickbuttonAdministarProduto (View view){
 
@@ -51,19 +52,10 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(call_activity_adminstrate_product);
     }
 
-
     public void OnClickbuttonAdministarCliente (View view){
 
         Intent call_activity_adminstrate_client = new Intent(this, ClientAdministrationActivity.class);
         startActivity(call_activity_adminstrate_client);
     }
 
-
-    public void OnClickbuttonCadastrarUsuario (View view){
-
-        Intent call_activity_create_user = new Intent(this, CreateUserActivity.class);
-        call_activity_create_user.putExtra("cad_edi", 0);
-        startActivity(call_activity_create_user);
-
-    }
 }

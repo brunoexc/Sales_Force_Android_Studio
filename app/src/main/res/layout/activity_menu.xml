@@ -63,12 +63,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/but_RegisterClient"
+                android:id="@+id/but_RegisterClient_menu"
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:onClick="OnClickbuttonCadastrarCliente"
-                android:text="@string/but_RegisterClient"
+                android:text="@string/but_RegisterClient_menu"
                 android:textAlignment="center"
                 android:textSize="19sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
