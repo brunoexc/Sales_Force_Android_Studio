@@ -2,6 +2,7 @@ package com.example.sales_force.Controladores;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -28,60 +29,50 @@ public class ClientController {
 
     Database helper;
     SQLiteDatabase db;
+    Cursor cursor;
 
     public ClientController(Context context) {
         this.context = context;
         lista_cliente = new ArrayList<>();
-        carregarLista();
 
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
+        carregarLista();
     }
 
     private void carregarLista() {
         try {
-            FileInputStream fis = this.context.openFileInput("clientes.txt");
 
-            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
-            StringBuilder sb = new StringBuilder();
-            String linha;
-            do{
-                linha = reader.readLine();
-                if (sb.length() != 0)
-                    sb.append('\n');
-                sb.append(linha);
-            }while(linha != null);
-            reader.close();
-            fis.close();
+            SQLiteDatabase db = helper.getReadableDatabase();
+            try {
+                cursor = db.rawQuery("select * from clients", null);
 
-            //Log.i("TAG",sb.toString());
-            String jsonStr = sb.toString();
-            JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("clientes"); //ERRO AQUI (ESTA CHAMANDO EXPECTION DE VALORES NÃO ENCONTRADO PARA "clientes"
+                lista_cliente.clear();
+                while (cursor.moveToNext()) {
+                    Clients cliente = new Clients();
+                    cliente.id = cursor.getInt(cursor.getColumnIndex("id"));
+                    cliente.name = cursor.getString(cursor.getColumnIndex("name"));
+                    cliente.email = cursor.getString(cursor.getColumnIndex("email"));
+                    cliente.phone = cursor.getString(cursor.getColumnIndex("phone"));
+                    cliente.cpf = cursor.getString(cursor.getColumnIndex("cpf"));
+                    cliente.cnpj = cursor.getString(cursor.getColumnIndex("cnpj"));
+                    cliente.address = cursor.getString(cursor.getColumnIndex("address"));
+                    cliente.district = cursor.getString(cursor.getColumnIndex("district"));
+                    cliente.uf = cursor.getString(cursor.getColumnIndex("uf"));
+                    cliente.city = cursor.getString(cursor.getColumnIndex("city"));
+                    cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
+                    cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
+                    lista_cliente.add(cliente);
+                }
 
-            lista_cliente.clear();
-            for (int i = 0; i < dados.length(); i++) {
-                JSONObject c = dados.getJSONObject(i);
-                Clients client_comparativo = new Clients();
-                client_comparativo.id = c.getInt("id");
-                client_comparativo.name = c.getString("nome");
-                client_comparativo.email = c.getString("email");
-                client_comparativo.phone = c.getString("telefone");
-                client_comparativo.cpf = c.getString("cpf");
-                client_comparativo.cnpj = c.getString("cnpj");
-                client_comparativo.address = c.getString("address");
-                client_comparativo.district = c.getString("district");
-                client_comparativo.uf = c.getString("uf");
-                client_comparativo.city = c.getString("city");
-                client_comparativo.cep = c.getString("cep");
-                client_comparativo.juridica_fisica = c.getString("tipo");
-                lista_cliente.add(client_comparativo);
+            } finally {
+                cursor.close();
             }
-
-        } catch ( IOException| JSONException e) {
-            Log.e("ERRO", e.getMessage());
+        }finally {
+            db.close();
         }
     }
+
 
     public void SaveClient (String name, String email, String phone, String cpf, String cnpj, String address, String district, String uf, String city, String cep, String juridica_fisica){
 
@@ -120,51 +111,80 @@ public class ClientController {
         }
     }
 
-    public void ReadClientOnFile(){
+    public void ReadClient() {
 
+
+        SQLiteDatabase db = helper.getReadableDatabase();
         try {
-            FileInputStream fis = this.context.openFileInput("clientes.txt");
+            cursor = db.rawQuery("select * from clients", null);
 
-            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
-            StringBuilder sb = new StringBuilder();
-            String linha;
-
-            do{
-                linha = reader.readLine();
-                if (sb.length() != 0)
-                    sb.append('\n');
-                sb.append(linha);
-            }while(linha != null);
-
-            reader.close();
-            fis.close();
-
-            //Log.i("TAG",sb.toString());
-            String jsonStr = sb.toString();
-            JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("clientes");
-
-            for (int i = 0; i < dados.length(); i++) {
-                JSONObject c = dados.getJSONObject(i);
-                Clients client_comparativo = new Clients();
-                client_comparativo.id = c.getInt("id");
-                client_comparativo.name = c.getString("nome");
-                client_comparativo.email = c.getString("email");
-                client_comparativo.phone = c.getString("telefone");
-                client_comparativo.cpf = c.getString("cpf");
-                client_comparativo.cnpj = c.getString("cnpj");
-                client_comparativo.address = c.getString("address");
-                client_comparativo.district = c.getString("district");
-                client_comparativo.uf = c.getString("uf");
-                client_comparativo.city = c.getString("city");
-                client_comparativo.cep = c.getString("cep");
-                client_comparativo.juridica_fisica = c.getString("tipo");
+            lista_cliente.clear();
+            while (cursor.moveToNext()) {
+                Clients cliente = new Clients();
+                cliente.id = cursor.getInt(cursor.getColumnIndex("id"));
+                cliente.name = cursor.getString(cursor.getColumnIndex("name"));
+                cliente.email = cursor.getString(cursor.getColumnIndex("email"));
+                cliente.phone = cursor.getString(cursor.getColumnIndex("phone"));
+                cliente.cpf = cursor.getString(cursor.getColumnIndex("cpf"));
+                cliente.cnpj = cursor.getString(cursor.getColumnIndex("cnpj"));
+                cliente.address = cursor.getString(cursor.getColumnIndex("address"));
+                cliente.district = cursor.getString(cursor.getColumnIndex("district"));
+                cliente.uf = cursor.getString(cursor.getColumnIndex("uf"));
+                cliente.city = cursor.getString(cursor.getColumnIndex("city"));
+                cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
+                cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
+                lista_cliente.add(cliente);
             }
-
-        } catch ( IOException| JSONException e) {
-            Log.e("ERRO", e.getMessage());
+            cursor.close();
+        } finally {
+            db.close();
         }
     }
+
+//
+//        try {
+//            FileInputStream fis = this.context.openFileInput("clientes.txt");
+//
+//            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+//            StringBuilder sb = new StringBuilder();
+//            String linha;
+//
+//            do{
+//                linha = reader.readLine();
+//                if (sb.length() != 0)
+//                    sb.append('\n');
+//                sb.append(linha);
+//            }while(linha != null);
+//
+//            reader.close();
+//            fis.close();
+//
+//            //Log.i("TAG",sb.toString());
+//            String jsonStr = sb.toString();
+//            JSONObject jsonObj = new JSONObject(jsonStr);
+//            JSONArray dados = jsonObj.getJSONArray("clientes");
+//
+//            for (int i = 0; i < dados.length(); i++) {
+//                JSONObject c = dados.getJSONObject(i);
+//                Clients client_comparativo = new Clients();
+//                client_comparativo.id = c.getInt("id");
+//                client_comparativo.name = c.getString("nome");
+//                client_comparativo.email = c.getString("email");
+//                client_comparativo.phone = c.getString("telefone");
+//                client_comparativo.cpf = c.getString("cpf");
+//                client_comparativo.cnpj = c.getString("cnpj");
+//                client_comparativo.address = c.getString("address");
+//                client_comparativo.district = c.getString("district");
+//                client_comparativo.uf = c.getString("uf");
+//                client_comparativo.city = c.getString("city");
+//                client_comparativo.cep = c.getString("cep");
+//                client_comparativo.juridica_fisica = c.getString("tipo");
+//            }
+//
+//        } catch ( IOException| JSONException e) {
+//            Log.e("ERRO", e.getMessage());
+//        }
+//    }
 
 }
 

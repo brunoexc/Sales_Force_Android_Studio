@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.sales_force.Adaptadores.ClientAdapter;
 import com.example.sales_force.Controladores.ClientController;
 import com.example.sales_force.Controladores.UserController;
 
@@ -20,6 +21,8 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
     public int input_id, cad_edi;
     public String input_name, input_email,input_phone, input_cpf, input_cnpj, input_address, input_district, input_uf, input_city, input_cep, input_juridica_fisica;
     Boolean valida_obrigatorio,valida_cpf,valida_cnpj;
+
+    ArrayAdapter adapter;
 
     public EditText get_name, get_email, get_phone, get_cpf, get_cnpj, get_address, get_district, get_city, get_cep;
     public Button troca_botao;
@@ -132,6 +135,7 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
             controller = new ClientController(this);
             controller.SaveClient(input_name, input_email, input_phone, input_cpf, input_cnpj, input_address, input_district, input_uf, input_city, input_cep, input_juridica_fisica );
             Toast.makeText(this, "Cliente "+ input_name + " cadastrado", Toast.LENGTH_SHORT).show();
+
             finish();
         }
         else

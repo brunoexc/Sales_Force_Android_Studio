@@ -15,8 +15,10 @@ import java.util.List;
 
 public class ProductAdapter extends ArrayAdapter<Products>{
 
-    TextView txt_user_id;
-    TextView txt_user_name;
+    TextView txt_product_id;
+    TextView txt_product_name;
+    TextView txt_product_cost;
+    TextView txt_product_stock;
 
     public ProductAdapter(Context context, List<Products> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
@@ -30,11 +32,15 @@ public class ProductAdapter extends ArrayAdapter<Products>{
         if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_product_list, parent, false);
 
-        txt_user_id = (TextView) convertView.findViewById(R.id.txt_LUL_UserID);
-        txt_user_name = (TextView) convertView.findViewById(R.id.txt_LUL_UserName);
+        txt_product_id = convertView.findViewById(R.id.txt_LPL_ProductID);
+        txt_product_name = convertView.findViewById(R.id.txt_LPL_ProductName);
+        txt_product_cost = convertView.findViewById(R.id.txt_LPL_ProductCost);
+        txt_product_stock = convertView.findViewById(R.id.txt_LPL_ProductQtdStock);
 
-        txt_user_id.setText(String.valueOf(produtos.id + " - "));
-        txt_user_name.setText(produtos.name);
+        txt_product_id.setText(String.valueOf(produtos.id + " - "));
+        txt_product_name.setText(produtos.name);
+        txt_product_cost.setText(" custo:" + produtos.custo);
+        txt_product_stock.setText(" estoque:" + produtos.qtd_estoque);
 
         return convertView;
     }

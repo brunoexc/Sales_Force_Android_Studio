@@ -19,6 +19,8 @@ public class ClientAdapter extends ArrayAdapter<Clients>{
     TextView txt_client_uf;
     TextView txt_client_city;
 
+    boolean mNotifyOnChange = true;
+
     public ClientAdapter(Context context, List<Clients> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
     }
@@ -43,4 +45,5 @@ public class ClientAdapter extends ArrayAdapter<Clients>{
 
         return convertView;
     }
+
 }

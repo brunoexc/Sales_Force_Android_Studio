@@ -77,7 +77,6 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-
     public void OnClickbuttonCadastrar (View view){
 
         get_name = (EditText) findViewById(R.id.txt_input_UserName);

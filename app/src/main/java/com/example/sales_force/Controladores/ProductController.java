@@ -2,10 +2,12 @@ package com.example.sales_force.Controladores;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.sales_force.Classes.Products;
+import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
 
 import org.json.JSONArray;
@@ -26,53 +28,41 @@ public class ProductController {
     public ArrayList<Products> lista_produto;
     Database helper;
     SQLiteDatabase db;
+    Cursor cursor;
 
     public ProductController(Context context) {
 
         this.context = context;
         lista_produto = new ArrayList<Products>();
-        carregarLista();
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
+        carregarLista();
     }
 
     private void carregarLista() {
-        try {
-            FileInputStream fis = this.context.openFileInput("produtos.txt");
 
-            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
-            StringBuilder sb = new StringBuilder();
-            String linha;
-            do{
-                linha = reader.readLine();
-                if (sb.length() != 0)
-                    sb.append('\n');
-                sb.append(linha);
-            }while(linha != null);
-            reader.close();
-            fis.close();
+        SQLiteDatabase db = helper.getReadableDatabase();
+        try{
+            cursor = db.rawQuery("select * from products", null);
 
-            //Log.i("TAG",sb.toString());
-            String jsonStr = sb.toString();
-            JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("produtos");
+            lista_produto.clear();
+            while (cursor.moveToNext()) {
 
-            for (int i = 0; i < dados.length(); i++) {
-                JSONObject c = dados.getJSONObject(i);
-                Products product_comparativo = new Products();
-                product_comparativo.id = c.getInt("id");
-                product_comparativo.name = c.getString("nome");
-                product_comparativo.um = c.getString("unidade medida");
-                product_comparativo.qtd_estoque = c.getString("qtd em estoque");
-                product_comparativo.custo = c.getString("custo");
-                product_comparativo.preco_venda = c.getString("preço venda");
-                product_comparativo.codigo_barras = c.getInt("código barras");
-                product_comparativo.status = c.getString("status produto");
-                lista_produto.add(product_comparativo);
+                Products produto = new Products();
+                produto.id = cursor.getInt(cursor.getColumnIndex("id"));
+                produto.name = cursor.getString(cursor.getColumnIndex("name"));
+                produto.um  = cursor.getString(cursor.getColumnIndex("um"));
+                produto.qtd_estoque = cursor.getString(cursor.getColumnIndex("qtd_estoque"));
+                produto.status = cursor.getString(cursor.getColumnIndex("status"));
+                produto.custo = cursor.getString(cursor.getColumnIndex("custo"));
+                produto.preco_venda = cursor.getString(cursor.getColumnIndex("preco_venda"));
+                produto.codigo_barras = cursor.getInt(cursor.getColumnIndex("codigo_barras"));
+
+                lista_produto.add(produto);
             }
-
-        } catch ( IOException| JSONException e) {
-            Log.e("ERRO", e.getMessage());
+            cursor.close();
+        }finally {
+            db.close();
         }
     }
 
