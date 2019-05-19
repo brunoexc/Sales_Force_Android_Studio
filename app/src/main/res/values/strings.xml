@@ -95,6 +95,7 @@
     <string name="txt_subtitle_PA_ProductSelect">Produto Selecionado</string>
     <string name="txt_title_PA_ProductMaintenance">Manutenção de Produtos</string>
     <string name="txt_subtitle_PA_ProductList">Lista de Produtos</string>
+    <string name="but_EditUser">Salvar</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>

@@ -2,8 +2,11 @@ package com.example.sales_force.Controladores;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.sales_force.Classes.Users;
+import com.example.sales_force.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,12 +24,15 @@ public class UserController {
 
     private Context context;
     public ArrayList<Users> lista;
+    public Button botão;
 
     public UserController(Context context) {
         this.context = context;
         lista = new ArrayList<>();
         carregarLista();
     }
+
+
 
     public void carregarLista() {
         try {
@@ -148,5 +154,6 @@ public class UserController {
         }
         return validate_user;
     }
+
 
 }

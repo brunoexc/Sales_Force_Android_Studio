@@ -62,6 +62,7 @@ public class MenuActivity extends AppCompatActivity {
     public void OnClickbuttonCadastrarUsuario (View view){
 
         Intent call_activity_create_user = new Intent(this, CreateUserActivity.class);
+        call_activity_create_user.putExtra("cad_edi", 0);
         startActivity(call_activity_create_user);
 
     }

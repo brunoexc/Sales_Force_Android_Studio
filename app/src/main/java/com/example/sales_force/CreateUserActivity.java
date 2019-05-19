@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,19 +21,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CreateUserActivity extends AppCompatActivity {
+public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     Users user;
     UserController controller;
 
-    public int input_id;
+    int cad_edi;
     public String input_name;
     public String input_user;
     public String input_password;
     public EditText get_name;
     public EditText get_user;
     public EditText get_password;
+
+    public Button troca_botao;
+
 
     Boolean valida_user;
 
@@ -46,13 +50,43 @@ public class CreateUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
-        valida_user = false;
+        Intent intent = getIntent();
+        cad_edi = intent.getIntExtra("cad_edi", 0);
 
+        troca_botao = findViewById(R.id.but_Register);
+        botaoCadastroEditar();
+
+        troca_botao.setOnClickListener(this);
+
+        valida_user = false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (cad_edi){
+            //cad_edi = 0 (Significa que estou querendo cadastrar)
+            case 0:
+                OnClickbuttonCadastrar(v);
+                break;
+
+            //cad_edi = 1 (Significa que estou querendo editar um cadastro)
+            case 1:
+                Teste();
+                break;
+        }
+    }
+
+    public void botaoCadastroEditar(){
+
+        if(cad_edi == 0){
+            troca_botao.setText("Cadastrar");
+        }else{
+            troca_botao.setText("Salvar");
+        }
     }
 
 
     public void OnClickbuttonCadastrar (View view){
-
 
         get_name = (EditText) findViewById(R.id.txt_input_UserName);
         input_name = get_name.getText().toString();
@@ -62,6 +96,8 @@ public class CreateUserActivity extends AppCompatActivity {
 
         get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
         input_password = get_password.getText().toString();
+
+
 
         valida_user = verificaObrigatórios(input_name, input_user, input_password, valida_user);
 
@@ -76,6 +112,11 @@ public class CreateUserActivity extends AppCompatActivity {
         }
     }
 
+    public void Teste(){
+
+        Toast.makeText(this, "Chamei o método TESTE ", Toast.LENGTH_SHORT).show();
+    }
+
 
     public Boolean verificaObrigatórios(String name, String user, String password, Boolean valida){
 
@@ -88,12 +129,6 @@ public class CreateUserActivity extends AppCompatActivity {
         }
         return valida;
     }
-
-
-
-
-
-
 
 
 
