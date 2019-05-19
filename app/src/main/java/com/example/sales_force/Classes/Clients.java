@@ -15,8 +15,6 @@ public class Clients {
     public String city;
     public String juridica_fisica;
     public String cep;
-//    public String
-//    public String
 
     public Clients() {}
 

@@ -12,21 +12,48 @@ public class Database extends SQLiteOpenHelper {
         super(context,"database.db", null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         Log.i("TAG","onCreate Helper");
         db.execSQL(
-                "CREATE TABLE clientes ("+
-                        "codigo    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
-                        "nome    TEXT NOT NULL,"+
-                        "documento    TEXT,"+
-                        "data_nasc    NUMERIC,"+
-                        "email    TEXT"+
+                "CREATE TABLE Users ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "name    TEXT NOT NULL,"+
+                        "user    TEXT,"+
+                        "password    NUMERIC"+
                         ");"
         );
 
+        db.execSQL(
+                "CREATE TABLE Clients ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "name    TEXT NOT NULL,"+
+                        "email    TEXT,"+
+                        "phone    TEXT,"+
+                        "cpf    TEXT,"+
+                        "cnpj    TEXT,"+
+                        "address    TEXT,"+
+                        "district    TEXT,"+
+                        "uf    TEXT,"+
+                        "city    TEXT,"+
+                        "tipo    TEXT,"+
+                        "cep    TEXT"+
+                        ");"
+        );
+
+        db.execSQL(
+                "CREATE TABLE Products ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "name    TEXT NOT NULL,"+
+                        "um    TEXT,"+
+                        "qtd_estoque    TEXT,"+
+                        "status    TEXT,"+
+                        "custo    TEXT,"+
+                        "preco_venda    TEXT,"+
+                        "codigo_barras    TEXT"+
+                        ");"
+        );
     }
 
     @Override

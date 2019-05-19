@@ -109,7 +109,7 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
 
         if(valida_obrigatorio == true){
             controller = new ProductController(this);
-            controller.RegisterProduct(1, input_name, input_um, input_qtd_estoque, input_status, input_custo, input_preco_venda, input_codigo_barras);
+            controller.SaveProduct(input_name, input_um, input_qtd_estoque, input_status, input_custo, input_preco_venda, input_codigo_barras);
             Toast.makeText(this, "Produto: "+ input_name + " cadastrado", Toast.LENGTH_SHORT).show();
             finish();
         }

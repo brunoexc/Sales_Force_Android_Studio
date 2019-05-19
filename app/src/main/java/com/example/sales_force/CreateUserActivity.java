@@ -3,6 +3,7 @@ package com.example.sales_force;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,23 +24,14 @@ import java.util.ArrayList;
 
 public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    Users user;
     UserController controller;
 
     int cad_edi;
-    public String input_name;
-    public String input_user;
-    public String input_password;
-    public EditText get_name;
-    public EditText get_user;
-    public EditText get_password;
-
-    public Button troca_botao;
-
-
+    public String input_name, input_user, input_password;
     Boolean valida_user;
 
+    public EditText get_name, get_user, get_password;
+    public Button troca_botao;
 
     public ListView list_view;
     public ArrayAdapter<Users> adaptador;
@@ -103,7 +95,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
         if (valida_user){
             controller = new UserController(this);
-            controller.SaveUserOnFile(1, input_name, input_user, input_password);
+            controller.SaveUser(input_name, input_user, input_password);
             Toast.makeText(this, "Usuário: "+ input_name.toUpperCase() + " cadastrado", Toast.LENGTH_SHORT).show();
             finish();
         }
