@@ -65,7 +65,7 @@
     <string name="but_newClientOrder">Registrar Novo Pedido</string>
     <string name="txt_subtitle_CreateNewOrder">Clique no Botão Acima para Registrar Novo Pedido</string>
     <string name="but_ClientOrderPayment">Pagamento</string>
-    <string name="txt_cab_OrderID">Número do Pedido:</string>
+    <string name="txt_cab_OrderID">ID Pedido:</string>
     <string name="txt_input_ProductCost" />
     <string name="txt_input_ProductSalesPrice" />
     <string name="txt_input_ProductStock" />
@@ -98,6 +98,11 @@
     <string name="but_EditUser">Salvar</string>
     <string name="but_ProductRegister">Cadastrar</string>
     <string name="but_RegisterClient_menu">Cadastrar Cliente</string>
+    <string name="txt_set_OrderID" />
+    <string name="txt_cab_OrderCreation">Data:</string>
+    <string name="txt_set_OrderCreation" />
+    <string name="txt_cab_OrderList">Produtos</string>
+    <string name="txt_cab_OrderClientList">Meu Carrinho</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>
