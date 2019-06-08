@@ -103,6 +103,23 @@
     <string name="txt_set_OrderCreation" />
     <string name="txt_cab_OrderList">Produtos</string>
     <string name="txt_cab_OrderClientList">Meu Carrinho</string>
+    <string name="txt_LPL_title_ProductID">ID</string>
+    <string name="txt_LPL_title_ProductName">Nome</string>
+    <string name="txt_LPL_title_ProductQtdStock">Estoque</string>
+    <string name="txt_LPL_title_ProductCost">Preço</string>
+    <string name="txt_LPL_title_AddProduct">Add</string>
+    <string name="txt_LCL_title_ClientUF">UF</string>
+    <string name="txt_LPL_title_ClientCity">Cidade</string>
+    <string name="txt_subtitle_OA_OrderProductSelect">Seleção de Produtos</string>
+    <string name="but_OrderAddProduct">Add</string>
+    <string name="but_OrderClientCart">Carrinho</string>
+    <string name="txt_cab_OrderUserName">Solicitante:</string>
+    <string name="txt_set_OrderUserName" />
+    <string name="txt_cab_OrderDate">Data:</string>
+    <string name="txt_set_OrderClient">Cliente:</string>
+    <string name="txt_cab_OrderTotalCost">Total do Pedido:</string>
+    <string name="txt_set_OrderTotalCost">0,00</string>
+    <string name="but_OrderFinish">Pagamento</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>

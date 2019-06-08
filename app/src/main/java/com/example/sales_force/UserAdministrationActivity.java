@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.sales_force.Adaptadores.UserAdapter;
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Controladores.UserController;
@@ -14,12 +18,12 @@ import com.example.sales_force.Controladores.UserController;
 public class UserAdministrationActivity extends AppCompatActivity {
 
     public UserController controller;
-    public Users usuario;
+    public Users user;
     public UserAdapter adapter;
     public ListView listView;
 
 
-    public int input_id;
+    public int id_user;
     int cad_edi;
     public String input_name;
     public String input_user;
@@ -27,6 +31,8 @@ public class UserAdministrationActivity extends AppCompatActivity {
     public EditText get_name;
     public EditText get_user;
     public EditText get_password;
+    public EditText selected_user;
+    public EditText txt_selected_user;
 
 
     @Override
@@ -39,26 +45,42 @@ public class UserAdministrationActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_Users);
         adapter = new UserAdapter(this, controller.lista);
         listView.setAdapter(adapter);
+
+        selected_user = findViewById(R.id.txt_input_UA_SelectedName);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                user = controller.lista.get(position);
+                SelecionaLista(user);
+                id_user = user.id;
+
+            }
+        });
+
+    }
+
+    public void SelecionaLista (Users user){
+        selected_user.setText(user.name);
     }
 
 
     public void OnClickbuttonEditarUsuario (View view){
 
-//        usuario = new Users();//
-//
-//        get_name = (EditText) findViewById(R.id.txt_input_UserName);
-//        input_name = get_name.getText().toString();
-//
-//        get_user = (EditText) findViewById(R.id.txt_input_UserLogin);
-//        input_user = get_user.getText().toString();
-//
-//        get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
-//        input_password = get_password.getText().toString();
+        if(user != null){
+            Intent ca_create_user = new Intent(this, CreateUserActivity.class);
+            ca_create_user.putExtra("cad_edi", 1);
+            ca_create_user.putExtra("user_id", id_user);
+            startActivity(ca_create_user);
+            finish();
+        }else{
 
-        Intent ca_create_user = new Intent(this, CreateUserActivity.class);
-        ca_create_user.putExtra("cad_edi", 1);
-        startActivity(ca_create_user);
-//        call_activity_create_user.putExtra("user", 1);
+            Toast.makeText(UserAdministrationActivity.this, "Nenhum usuário selecionado!", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 }

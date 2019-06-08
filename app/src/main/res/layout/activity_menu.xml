@@ -161,7 +161,7 @@
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
-                android:onClick="OnClickbuttonEmDesenvolvimento"
+                android:onClick="OnClickbuttonCadastrarPedido"
                 android:text="@string/but_RegisterOrder"
                 android:textAlignment="center"
                 android:textSize="19sp"

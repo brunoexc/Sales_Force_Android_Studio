@@ -37,10 +37,10 @@ public class ProductAdapter extends ArrayAdapter<Products>{
         txt_product_cost = convertView.findViewById(R.id.txt_LPL_ProductCost);
         txt_product_stock = convertView.findViewById(R.id.txt_LPL_ProductQtdStock);
 
-        txt_product_id.setText(String.valueOf(produtos.id + " - "));
+        txt_product_id.setText(String.valueOf(produtos.id));
         txt_product_name.setText(produtos.name);
-        txt_product_cost.setText(" custo:" + produtos.custo);
-        txt_product_stock.setText(" estoque:" + produtos.qtd_estoque);
+        txt_product_cost.setText(produtos.custo);
+        txt_product_stock.setText(produtos.qtd_estoque);
 
         return convertView;
     }

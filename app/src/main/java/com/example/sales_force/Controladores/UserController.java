@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
@@ -31,6 +32,8 @@ public class UserController {
     Database helper;
     SQLiteDatabase db;
     Cursor cursor;
+
+
 
     public UserController(Context context) {
         this.context = context;
@@ -71,7 +74,7 @@ public class UserController {
         usuario.name = name;
         usuario.user  = user;
         usuario.password = password;
-        lista.add(usuario);
+//        lista.add(usuario);
 
         SQLiteDatabase db = helper.getWritableDatabase();
         try{
@@ -81,6 +84,27 @@ public class UserController {
             cv.put("password", usuario.password);
             long id = db.insert("Users", null, cv);
             usuario.id = (int) id;
+        }finally {
+            db.close();
+        }
+    }
+
+    public void UpdateUser (Integer id_user, String name, String user, String password){
+
+        Users usuario = new Users();
+        usuario.name = name;
+        usuario.user  = user;
+        usuario.password = password;
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try{
+            ContentValues cv = new ContentValues();
+            cv.put("name", usuario.name);
+            cv.put("user", usuario.user);
+            cv.put("password", usuario.password);
+
+            db.update("users", cv,"id = ?", new String[] {String.valueOf(id_user )});
+
         }finally {
             db.close();
         }
@@ -109,7 +133,7 @@ public class UserController {
                 else{
                     validate_user = false;
                 }
-//                editText.getText().append("id: "+id+ ", nome: "+nome+ ", documento: "+documento+"\n");
+
             }
             cursor.close();
         }finally {

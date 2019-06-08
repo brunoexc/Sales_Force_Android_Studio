@@ -3,6 +3,7 @@ package com.example.sales_force;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,17 +26,18 @@ import java.util.ArrayList;
 public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener {
 
     UserController controller;
+    Users db_user;
 
-    int cad_edi;
+    int input_id, cad_edi, id_user;
     public String input_name, input_user, input_password;
     Boolean valida_user;
 
-    public EditText get_name, get_user, get_password;
+    public EditText get_name, get_user, get_password, selected_name, selected_user, selected_password;
     public Button troca_botao;
 
-    public ListView list_view;
-    public ArrayAdapter<Users> adaptador;
-    public ArrayList<Users> listaUsuarios;
+    Database helper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,26 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
         //Tratar tela para receber cadastro ou edição de usuários
         cad_edi = intent.getIntExtra("cad_edi", 0);
+        id_user = intent.getIntExtra("user_id", 0);
+
+        helper = new Database(this);
+        db_user = new Users();
+
+        //Acha os campos do formulário para cadastrar ou editar
+        get_name = findViewById(R.id.txt_input_UserName);
+        get_user = findViewById(R.id.txt_input_UserLogin);
+        get_password = findViewById(R.id.txt_input_UserPassword);
+
+
+        //Identifica se a chamada da Activity é para cadastrar ou editar
         troca_botao = findViewById(R.id.but_Register);
         troca_botao.setOnClickListener(this);
+
+        controller = new UserController(this);
+
+        //Usuário que será lido do banco/lista para editar
+        db_user = controller.lista.get(id_user - 1);
+
         botaoCadastroEditar();
 
         //Tratar campos obrigatórios
@@ -63,7 +83,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
             //cad_edi = 1 (Significa que estou querendo editar um cadastro)
             case 1:
-                Teste();
+                AtualizaUsuario();
                 break;
         }
     }
@@ -73,29 +93,25 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         if(cad_edi == 0){
             troca_botao.setText("Cadastrar");
         }else{
+            get_user.setText(db_user.user);
+            get_name.setText(db_user.name);
+            get_password.setText(db_user.password);
+
             troca_botao.setText("Salvar");
         }
     }
 
     public void OnClickbuttonCadastrar (View view){
 
-        get_name = (EditText) findViewById(R.id.txt_input_UserName);
         input_name = get_name.getText().toString();
-
-        get_user = (EditText) findViewById(R.id.txt_input_UserLogin);
         input_user = get_user.getText().toString();
-
-        get_password = (EditText) findViewById(R.id.txt_input_UserPassword);
         input_password = get_password.getText().toString();
-
-
 
         valida_user = verificaObrigatórios(input_name, input_user, input_password, valida_user);
 
         if (valida_user){
-            controller = new UserController(this);
             controller.SaveUser(input_name, input_user, input_password);
-            Toast.makeText(this, "Usuário: "+ input_name.toUpperCase() + " cadastrado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Usuário: "+ input_name.toUpperCase() + " cadastrado!", Toast.LENGTH_SHORT).show();
             finish();
         }
         else{
@@ -103,9 +119,23 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void Teste(){
+    public void AtualizaUsuario(){
 
-        Toast.makeText(this, "Chamei o método TESTE ", Toast.LENGTH_SHORT).show();
+        input_id = db_user.id;
+        input_name = get_name.getText().toString();
+        input_user = get_user.getText().toString();
+        input_password = get_password.getText().toString();
+
+        valida_user = verificaObrigatórios(input_name, input_user, input_password, valida_user);
+
+        if (valida_user){
+            controller.UpdateUser(input_id, input_name, input_user, input_password);
+            Toast.makeText(this, "Usuário Atualizado!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Favor Preencher Campos Obrigatórios(*)", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -120,8 +150,6 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         }
         return valida;
     }
-
-
 
 }
 

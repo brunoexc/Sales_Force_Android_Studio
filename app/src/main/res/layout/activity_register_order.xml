@@ -33,7 +33,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="1dp"
         android:gravity="center_horizontal|center_vertical"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder">
@@ -41,70 +41,90 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="45"
+            android:layout_weight="50"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_cab_OrderID"
-                android:layout_width="108dp"
-                android:layout_height="29dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/txt_cab_OrderID"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="20"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_set_OrderID"
-                android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/txt_set_OrderID"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txt_cab_OrderClientList"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder" />
+                <TextView
+                    android:id="@+id/txt_cab_OrderUserName"
+                    android:layout_width="82dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/txt_cab_OrderUserName"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/txt_set_OrderUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@string/txt_input_ClientName"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_cab_OrderDate"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/txt_cab_OrderDate"
+                    android:textAlignment="viewStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/txt_set_OrderCreation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:ems="10"
+                    android:inputType="date" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="45"
+            android:layout_height="50dp"
+            android:layout_weight="50"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_cab_OrderClientList"
-                android:layout_width="108dp"
-                android:layout_height="29dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/txt_cab_OrderCreation"
-                android:textAlignment="textStart"
+                android:id="@+id/txt_set_OrderClient"
+                android:layout_width="82dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/txt_set_OrderClient"
                 android:textColor="@android:color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txt_set_OrderCreation"
+            <Spinner
+                android:id="@+id/combo_OrderClient"
                 android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/txt_set_OrderCreation"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txt_cab_OrderClientList"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder" />
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
 
@@ -128,78 +148,127 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <TextView
-        android:id="@+id/txt_cab_OrderList"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_subtitle_OA_OrderProductSelect"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="50"
-        android:text="@string/txt_cab_OrderList"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_cab_OrderListClient"
-        android:layout_width="151dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="50"
-        android:text="@string/txt_cab_OrderClientList"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:text="@string/txt_subtitle_OA_OrderProductSelect"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/but_OrderFinish" />
 
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/txt_subtitle_OA_OrderProductSelect">
+
+        <EditText
+            android:id="@+id/txt_input_UA_SelectedName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/txt_input_UA_SelectedName"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="405dp" />
+
+        <Button
+            android:id="@+id/but_OrderAddProduct"
+            android:layout_width="59dp"
+            android:layout_height="match_parent"
+            android:text="@string/but_OrderAddProduct"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="252dp" />
+
+        <Button
+            android:id="@+id/but_OrderClientCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/but_OrderClientCart"
+            tools:layout_editor_absoluteX="306dp"
+            tools:layout_editor_absoluteY="252dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_cab_OrderTotalCost"
+        android:layout_width="186dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:text="@string/txt_cab_OrderTotalCost"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+    <TextView
+        android:id="@+id/txt_RS"
+        android:layout_width="33dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:text="R$"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/txt_cab_OrderTotalCost"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+    <Button
+        android:id="@+id/but_OrderFinish"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/but_OrderFinish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+    <TextView
+        android:id="@+id/txt_set_OrderTotalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/txt_set_OrderTotalCost"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_RS"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="5dp"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title_ClientOrder">
+        app:layout_constraintTop_toBottomOf="@+id/txt_cab_OrderTotalCost">
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/fragment3"
+            android:name="com.example.sales_force.OrderProductListFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="50"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="320dp">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </ScrollView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="50"
-            android:orientation="horizontal">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </ScrollView>
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
