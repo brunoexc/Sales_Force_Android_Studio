@@ -45,6 +45,7 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_register_product);
         Intent intent = getIntent();
 
+        controller = new ProductController(this);
 
         get_name = findViewById(R.id.txt_input_ProductName);
         get_qtd_estoque = findViewById(R.id.txt_input_ProductStock);
@@ -53,8 +54,6 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
 
         cad_edi = intent.getIntExtra("cad_edi", 0);
         id_product = intent.getIntExtra("product_id", 0);
-
-        controller = new ProductController(this);
 
         db_product = controller.lista_produto.get(id_product - 1);
 
@@ -104,18 +103,14 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
             get_custo.setText(db_product.custo);
             get_preco_venda.setText(db_product.preco_venda);
 
-            db_status = db_product.status;
-            DBStatusCheck(db_status);
-
             //Quando carrego o editar produto, a variavel input_status do formulário recebe valor automático, ou seja,
             //é necessário preencher ela manualmente porque no edição o valor input_status está como null e trava no método verificaObrigatórios()
+            db_status = db_product.status;
+            DBStatusCheck(db_status);
             input_status = db_status;
 
             //Seta o spinner do produto
             combo_ProductUM.setSelection(spinner_position);
-
-//            get_status.setText(db_product.status);
-//            get_um.setText(db_product.um);
 
             troca_botao.setText("Salvar");
         }
@@ -156,9 +151,6 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
         input_qtd_estoque = get_qtd_estoque.getText().toString();
         input_custo = get_custo.getText().toString();
         input_preco_venda = get_preco_venda.getText().toString();
-
-
-
 
         valida_obrigatorio = verificaObrigatórios(input_name, input_um, input_qtd_estoque, input_preco_venda, input_status, valida_obrigatorio);
 

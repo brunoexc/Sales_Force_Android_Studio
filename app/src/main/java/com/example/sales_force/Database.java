@@ -34,6 +34,7 @@ public class Database extends SQLiteOpenHelper {
                         "cpf    TEXT,"+
                         "cnpj    TEXT,"+
                         "address    TEXT,"+
+                        "address_num    TEXT,"+
                         "district    TEXT,"+
                         "uf    TEXT,"+
                         "city    TEXT,"+
@@ -61,7 +62,7 @@ public class Database extends SQLiteOpenHelper {
 
         Log.i("TAG","oldVersion:"+oldVersion+" newVersion:"+newVersion);
         if (newVersion > 1){
-            db.execSQL( "ALTER TABLE clientes add telefone TEXT;");
+            db.execSQL( "ALTER TABLE Clients add address_num TEXT;");
         }
     }
 }

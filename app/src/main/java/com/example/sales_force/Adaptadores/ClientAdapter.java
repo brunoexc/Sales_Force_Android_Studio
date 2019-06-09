@@ -38,7 +38,7 @@ public class ClientAdapter extends ArrayAdapter<Clients>{
         txt_client_uf = convertView.findViewById(R.id.txt_LCL_ClientUF);
         txt_client_city = convertView.findViewById(R.id.txt_LCL_ClientCity);
 
-        txt_client_id.setText(String.valueOf(clientes.id + " - "));
+        txt_client_id.setText(String.valueOf(clientes.id));
         txt_client_name.setText(clientes.name + " ");
         txt_client_uf.setText(clientes.uf + " ");
         txt_client_city.setText(clientes.city);

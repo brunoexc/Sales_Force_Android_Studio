@@ -10,6 +10,7 @@ public class Clients {
     public String cpf;
     public String cnpj;
     public String address;
+    public String address_num;
     public String district;
     public String uf;
     public String city;

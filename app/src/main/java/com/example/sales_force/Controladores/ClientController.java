@@ -57,6 +57,7 @@ public class ClientController {
                     cliente.cpf = cursor.getString(cursor.getColumnIndex("cpf"));
                     cliente.cnpj = cursor.getString(cursor.getColumnIndex("cnpj"));
                     cliente.address = cursor.getString(cursor.getColumnIndex("address"));
+                    cliente.address_num = cursor.getString(cursor.getColumnIndex("address_num"));
                     cliente.district = cursor.getString(cursor.getColumnIndex("district"));
                     cliente.uf = cursor.getString(cursor.getColumnIndex("uf"));
                     cliente.city = cursor.getString(cursor.getColumnIndex("city"));
@@ -68,21 +69,22 @@ public class ClientController {
             } finally {
                 cursor.close();
             }
-        }finally {
+        } finally {
             db.close();
         }
     }
 
 
-    public void SaveClient (String name, String email, String phone, String cpf, String cnpj, String address, String district, String uf, String city, String cep, String juridica_fisica){
+    public void SaveClient(String name, String email, String phone, String cpf, String cnpj, String address, String input_address_num, String district, String uf, String city, String cep, String juridica_fisica) {
 
         Clients cliente = new Clients();
         cliente.name = name;
-        cliente.email  = email;
+        cliente.email = email;
         cliente.phone = phone;
         cliente.cpf = cpf;
         cliente.cnpj = cnpj;
         cliente.address = address;
+        cliente.address_num = input_address_num;
         cliente.district = district;
         cliente.uf = uf;
         cliente.city = city;
@@ -91,7 +93,7 @@ public class ClientController {
         lista_cliente.add(cliente);
 
         SQLiteDatabase db = helper.getWritableDatabase();
-        try{
+        try {
             ContentValues cv = new ContentValues();
             cv.put("name", cliente.name);
             cv.put("email", cliente.email);
@@ -99,6 +101,7 @@ public class ClientController {
             cv.put("cpf", cliente.cpf);
             cv.put("cnpj", cliente.cnpj);
             cv.put("address", cliente.address);
+            cv.put("address_num", cliente.address_num);
             cv.put("district", cliente.district);
             cv.put("uf", cliente.uf);
             cv.put("city", cliente.city);
@@ -106,40 +109,52 @@ public class ClientController {
             cv.put("tipo", cliente.juridica_fisica);
             long id = db.insert("Clients", null, cv);
             cliente.id = (int) id;
-        }finally {
-            db.close();
-        }
-    }
-
-    public void ReadClient() {
-
-
-        SQLiteDatabase db = helper.getReadableDatabase();
-        try {
-            cursor = db.rawQuery("select * from clients", null);
-
-            lista_cliente.clear();
-            while (cursor.moveToNext()) {
-                Clients cliente = new Clients();
-                cliente.id = cursor.getInt(cursor.getColumnIndex("id"));
-                cliente.name = cursor.getString(cursor.getColumnIndex("name"));
-                cliente.email = cursor.getString(cursor.getColumnIndex("email"));
-                cliente.phone = cursor.getString(cursor.getColumnIndex("phone"));
-                cliente.cpf = cursor.getString(cursor.getColumnIndex("cpf"));
-                cliente.cnpj = cursor.getString(cursor.getColumnIndex("cnpj"));
-                cliente.address = cursor.getString(cursor.getColumnIndex("address"));
-                cliente.district = cursor.getString(cursor.getColumnIndex("district"));
-                cliente.uf = cursor.getString(cursor.getColumnIndex("uf"));
-                cliente.city = cursor.getString(cursor.getColumnIndex("city"));
-                cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
-                cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
-                lista_cliente.add(cliente);
-            }
-            cursor.close();
         } finally {
             db.close();
         }
     }
+
+    public void UpdateClient (Integer id_client, String name, String email, String phone, String cpf, String cnpj, String address, String input_address_num, String district, String uf, String city, String cep, String juridica_fisica) {
+
+        Clients cliente = new Clients();
+        cliente.name = name;
+        cliente.email = email;
+        cliente.phone = phone;
+        cliente.cpf = cpf;
+        cliente.cnpj = cnpj;
+        cliente.address = address;
+        cliente.address_num = input_address_num;
+        cliente.district = district;
+        cliente.uf = uf;
+        cliente.city = city;
+        cliente.cep = cep;
+        cliente.juridica_fisica = juridica_fisica;
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try {
+            ContentValues cv = new ContentValues();
+            cv.put("name", cliente.name);
+            cv.put("email", cliente.email);
+            cv.put("phone", cliente.phone);
+            cv.put("cpf", cliente.cpf);
+            cv.put("cnpj", cliente.cnpj);
+            cv.put("address", cliente.address);
+            cv.put("address_num", cliente.address_num);
+            cv.put("district", cliente.district);
+            cv.put("uf", cliente.uf);
+            cv.put("city", cliente.city);
+            cv.put("cep", cliente.cep);
+            cv.put("tipo", cliente.juridica_fisica);
+
+            db.update("Clients", cv, "id = ?", new String[]{String.valueOf(id_client)});
+
+        } finally {
+            db.close();
+        }
+    }
+
+
+}
 
 //
 //        try {
@@ -186,7 +201,36 @@ public class ClientController {
 //        }
 //    }
 
-}
+//
+//    public void ReadClient() {
+//
+//
+//        SQLiteDatabase db = helper.getReadableDatabase();
+//        try {
+//            cursor = db.rawQuery("select * from clients", null);
+//
+//            lista_cliente.clear();
+//            while (cursor.moveToNext()) {
+//                Clients cliente = new Clients();
+//                cliente.id = cursor.getInt(cursor.getColumnIndex("id"));
+//                cliente.name = cursor.getString(cursor.getColumnIndex("name"));
+//                cliente.email = cursor.getString(cursor.getColumnIndex("email"));
+//                cliente.phone = cursor.getString(cursor.getColumnIndex("phone"));
+//                cliente.cpf = cursor.getString(cursor.getColumnIndex("cpf"));
+//                cliente.cnpj = cursor.getString(cursor.getColumnIndex("cnpj"));
+//                cliente.address = cursor.getString(cursor.getColumnIndex("address"));
+//                cliente.district = cursor.getString(cursor.getColumnIndex("district"));
+//                cliente.uf = cursor.getString(cursor.getColumnIndex("uf"));
+//                cliente.city = cursor.getString(cursor.getColumnIndex("city"));
+//                cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
+//                cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
+//                lista_cliente.add(cliente);
+//            }
+//            cursor.close();
+//        } finally {
+//            db.close();
+//        }
+//    }
 
 
 

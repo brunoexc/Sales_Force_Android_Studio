@@ -14,8 +14,8 @@ import java.util.List;
 
 public class UserAdapter extends ArrayAdapter<Users>{
 
-    TextView txt_user_id;
-    TextView txt_user_name;
+    TextView txt_user_id,txt_user_name, txt_user;
+
 
     public UserAdapter(Context context, List<Users> objects) {
         super(context, android.R.layout.simple_list_item_1, objects);
@@ -29,11 +29,13 @@ public class UserAdapter extends ArrayAdapter<Users>{
         if (convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_user_list, parent, false);
 
-        txt_user_id = (TextView) convertView.findViewById(R.id.txt_LUL_UserID);
-        txt_user_name = (TextView) convertView.findViewById(R.id.txt_LUL_UserName);
+        txt_user_id = convertView.findViewById(R.id.txt_LUL_UserID);
+        txt_user_name = convertView.findViewById(R.id.txt_LUL_UserName);
+        txt_user = convertView.findViewById(R.id.txt_LUL_User);
 
-        txt_user_id.setText(String.valueOf(usuario.id + " - "));
+        txt_user_id.setText(String.valueOf(usuario.id));
         txt_user_name.setText(usuario.name);
+        txt_user.setText(usuario.user);
 
         return convertView;
     }
