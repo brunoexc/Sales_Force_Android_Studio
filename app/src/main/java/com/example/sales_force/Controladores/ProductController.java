@@ -39,7 +39,7 @@ public class ProductController {
         carregarLista();
     }
 
-    private void carregarLista() {
+    public void carregarLista() {
 
         SQLiteDatabase db = helper.getReadableDatabase();
         try{
@@ -125,6 +125,15 @@ public class ProductController {
         }
     }
 
+    public void DeleteProduct(Products product){
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try{
+            db.delete("Products","id = ?", new String[] {String.valueOf(product.id)});
+        }finally {
+            db.close();
+        }
+    }
 
 
 

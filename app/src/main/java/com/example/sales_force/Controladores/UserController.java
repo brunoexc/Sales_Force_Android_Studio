@@ -133,7 +133,6 @@ public class UserController {
                 else{
                     validate_user = false;
                 }
-
             }
             cursor.close();
         }finally {
@@ -141,6 +140,20 @@ public class UserController {
         }
         return validate_user;
     }
+
+    public void DeleteUser(Users user){
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try{
+            db.delete("Users","id = ?", new String[] {String.valueOf(user.id)});
+        }finally {
+            db.close();
+        }
+    }
+
+
+
+
 }
 
 

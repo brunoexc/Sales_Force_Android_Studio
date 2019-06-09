@@ -162,5 +162,12 @@
         <item> "ML"</item>
     </string-array>
 
+    <string-array name="SystemMessageDelete">
+        <item> "Você deseja excluir o usuário "</item>
+        <item> "Você deseja excluir o produto "</item>
+        <item> "Você deseja excluir o cliente "</item>
+    </string-array>
+
+
 
 </resources>

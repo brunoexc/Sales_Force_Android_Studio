@@ -40,7 +40,7 @@ public class ClientController {
         carregarLista();
     }
 
-    private void carregarLista() {
+    public void carregarLista() {
         try {
 
             SQLiteDatabase db = helper.getReadableDatabase();
@@ -73,7 +73,6 @@ public class ClientController {
             db.close();
         }
     }
-
 
     public void SaveClient(String name, String email, String phone, String cpf, String cnpj, String address, String input_address_num, String district, String uf, String city, String cep, String juridica_fisica) {
 
@@ -153,6 +152,16 @@ public class ClientController {
         }
     }
 
+
+    public void DeleteClient(Clients client){
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try{
+            db.delete("Clients","id = ?", new String[] {String.valueOf(client.id)});
+        }finally {
+            db.close();
+        }
+    }
 
 }
 
