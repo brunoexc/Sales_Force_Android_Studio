@@ -65,13 +65,13 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/txt_input_UA_SelectedName"
+            android:id="@+id/txt_input_PA_SelectedName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/txt_input_UA_SelectedName"
+            android:text="@string/txt_input_PA_SelectedName"
             android:textAlignment="center"
             android:textColor="@android:color/black" />
 

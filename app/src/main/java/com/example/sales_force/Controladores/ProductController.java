@@ -96,47 +96,40 @@ public class ProductController {
         }
     }
 
+    public void UpdateProduct (Integer id_product, String name, String um, String qtd_estoque, String status, String custo, String preco, int codigo_barras){
 
-    public void ReadProductsOnFile(){
+        Products produto = new Products();
+        produto.name = name;
+        produto.um = um;
+        produto.qtd_estoque = qtd_estoque;
+        produto.status = status;
+        produto.custo = custo;
+        produto.preco_venda = preco;
+        produto.codigo_barras = codigo_barras;
 
-        try {
-            FileInputStream fis = this.context.openFileInput("produtos.txt");
+        SQLiteDatabase db = helper.getWritableDatabase();
+        try{
+            ContentValues cv = new ContentValues();
+            cv.put("name", produto.name);
+            cv.put("um", produto.um);
+            cv.put("qtd_estoque", produto.qtd_estoque);
+            cv.put("status", produto.status);
+            cv.put("custo", produto.custo);
+            cv.put("preco_venda", produto.preco_venda);
+            cv.put("codigo_barras", produto.codigo_barras);
 
-            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
-            StringBuilder sb = new StringBuilder();
-            String linha;
+            db.update("Products", cv,"id = ?", new String[] {String.valueOf(id_product)});
 
-            do{
-                linha = reader.readLine();
-                if (sb.length() != 0)
-                    sb.append('\n');
-                sb.append(linha);
-            }while(linha != null);
-
-            reader.close();
-            fis.close();
-
-            //Log.i("TAG",sb.toString());
-            String jsonStr = sb.toString();
-            JSONObject jsonObj = new JSONObject(jsonStr);
-            JSONArray dados = jsonObj.getJSONArray("produtos");
-
-            for (int i = 0; i < dados.length(); i++) {
-                JSONObject c = dados.getJSONObject(i);
-                Products product_comparativo = new Products();
-                product_comparativo.id = c.getInt("id");
-                product_comparativo.name = c.getString("nome");
-                product_comparativo.um = c.getString("unidade de medida");
-                product_comparativo.status = c.getString("status");
-                product_comparativo.custo = c.getString("custo");
-                product_comparativo.preco_venda = c.getString("preço");
-                product_comparativo.codigo_barras = c.getInt("código de barras");
-            }
-
-        } catch ( IOException| JSONException e) {
-            Log.e("ERRO", e.getMessage());
+        }finally {
+            db.close();
         }
     }
+
+
+
+
+
+
 
 }
 
@@ -176,3 +169,45 @@ public class ProductController {
 //        } catch (IOException | JSONException e) {
 //            Log.e("ERRO", e.getMessage());
 //        }
+
+
+//    public void ReadProductsOnFile(){
+//
+//        try {
+//            FileInputStream fis = this.context.openFileInput("produtos.txt");
+//
+//            BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+//            StringBuilder sb = new StringBuilder();
+//            String linha;
+//
+//            do{
+//                linha = reader.readLine();
+//                if (sb.length() != 0)
+//                    sb.append('\n');
+//                sb.append(linha);
+//            }while(linha != null);
+//
+//            reader.close();
+//            fis.close();
+//
+//            //Log.i("TAG",sb.toString());
+//            String jsonStr = sb.toString();
+//            JSONObject jsonObj = new JSONObject(jsonStr);
+//            JSONArray dados = jsonObj.getJSONArray("produtos");
+//
+//            for (int i = 0; i < dados.length(); i++) {
+//                JSONObject c = dados.getJSONObject(i);
+//                Products product_comparativo = new Products();
+//                product_comparativo.id = c.getInt("id");
+//                product_comparativo.name = c.getString("nome");
+//                product_comparativo.um = c.getString("unidade de medida");
+//                product_comparativo.status = c.getString("status");
+//                product_comparativo.custo = c.getString("custo");
+//                product_comparativo.preco_venda = c.getString("preço");
+//                product_comparativo.codigo_barras = c.getInt("código de barras");
+//            }
+//
+//        } catch ( IOException| JSONException e) {
+//            Log.e("ERRO", e.getMessage());
+//        }
+//    }

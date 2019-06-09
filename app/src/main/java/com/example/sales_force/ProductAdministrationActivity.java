@@ -5,16 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 
         import com.example.sales_force.Adaptadores.ProductAdapter;
-        import com.example.sales_force.Controladores.ProductController;
+import com.example.sales_force.Classes.Products;
+import com.example.sales_force.Classes.Users;
+import com.example.sales_force.Controladores.ProductController;
 
-public class ProductAdministrationActivity extends AppCompatActivity {
+public class ProductAdministrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     public ProductController controller;
     public ProductAdapter adapter;
     public ListView listView;
+
+    public Products product;
+
+    public int id_product;
+    public EditText selected_product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +35,25 @@ public class ProductAdministrationActivity extends AppCompatActivity {
         listView = findViewById(R.id.list_Products);
         adapter = new ProductAdapter(this, controller.lista_produto);
         listView.setAdapter(adapter);
+
+
+        selected_product = findViewById(R.id.txt_input_PA_SelectedName);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                product = controller.lista_produto.get(position);
+                SelecionaLista(product);
+                id_product = product.id;
+
+            }
+        });
+    }
+
+    public void SelecionaLista (Products product){
+        selected_product.setText(product.name);
     }
 
 
@@ -33,9 +61,17 @@ public class ProductAdministrationActivity extends AppCompatActivity {
 
         Intent ca_register_product = new Intent(this, RegisterProduct.class);
         ca_register_product.putExtra("cad_edi", 1);
+        ca_register_product.putExtra("product_id", id_product);
         startActivity(ca_register_product);
+        finish();
+    }
+
+
+    @Override
+    public void onClick(View v) {
 
     }
+
 
 
 }

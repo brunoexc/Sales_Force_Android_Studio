@@ -22,18 +22,8 @@ public class UserAdministrationActivity extends AppCompatActivity {
     public UserAdapter adapter;
     public ListView listView;
 
-
     public int id_user;
-    int cad_edi;
-    public String input_name;
-    public String input_user;
-    public String input_password;
-    public EditText get_name;
-    public EditText get_user;
-    public EditText get_password;
     public EditText selected_user;
-    public EditText txt_selected_user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -103,7 +103,7 @@ public class UserController {
             cv.put("user", usuario.user);
             cv.put("password", usuario.password);
 
-            db.update("users", cv,"id = ?", new String[] {String.valueOf(id_user )});
+            db.update("users", cv,"id = ?", new String[] {String.valueOf(id_user)});
 
         }finally {
             db.close();

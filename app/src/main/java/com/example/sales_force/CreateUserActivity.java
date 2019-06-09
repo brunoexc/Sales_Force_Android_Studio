@@ -32,7 +32,7 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
     public String input_name, input_user, input_password;
     Boolean valida_user;
 
-    public EditText get_name, get_user, get_password, selected_name, selected_user, selected_password;
+    public EditText get_name, get_user, get_password;
     public Button troca_botao;
 
     Database helper;

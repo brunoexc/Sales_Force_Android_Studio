@@ -39,12 +39,10 @@ public class ProductAdapter extends ArrayAdapter<Products>{
 
         txt_product_id.setText(String.valueOf(produtos.id));
         txt_product_name.setText(produtos.name);
-        txt_product_cost.setText(produtos.custo);
+        txt_product_cost.setText(produtos.preco_venda);
         txt_product_stock.setText(produtos.qtd_estoque);
 
         return convertView;
     }
-
-
 
 }
