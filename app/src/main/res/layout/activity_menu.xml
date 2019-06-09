@@ -67,23 +67,27 @@
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/client_buttons_btc"
                 android:onClick="OnClickbuttonCadastrarCliente"
                 android:text="@string/but_RegisterClient_menu"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
 
             <Button
                 android:id="@+id/but_ClientMaintenance"
-                android:layout_width="233dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:layout_weight="1"
+                android:background="@drawable/client_buttons_btc"
                 android:onClick="OnClickbuttonAdministarCliente"
                 android:text="@string/but_ClientMaintenance"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
         </LinearLayout>
@@ -98,10 +102,12 @@
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/products_buttons_btc"
                 android:onClick="OnClickbuttonCadastrarProduto"
                 android:text="@string/but_RegisterProduct"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
 
@@ -111,10 +117,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:layout_weight="1"
+                android:background="@drawable/products_buttons_btc"
                 android:onClick="OnClickbuttonAdministarProduto"
                 android:text="@string/but_ProductMaintenance"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
 
@@ -130,10 +138,12 @@
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/user_buttons_btc"
                 android:onClick="OnClickbuttonCadastrarUsuario"
                 android:text="@string/but_RegisterUser"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
 
@@ -143,10 +153,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:layout_weight="1"
+                android:background="@drawable/user_buttons_btc"
                 android:onClick="OnClickbuttonAdministarUsuario"
                 android:text="@string/but_UserMaintenance"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
         </LinearLayout>
@@ -161,10 +173,12 @@
                 android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/order_buttons_btc"
                 android:onClick="OnClickbuttonCadastrarPedido"
                 android:text="@string/but_RegisterOrder"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
 
@@ -174,10 +188,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:layout_weight="1"
+                android:background="@drawable/order_buttons_btc"
                 android:onClick="OnClickbuttonEmDesenvolvimento"
                 android:text="@string/but_OrderMaintenance"
                 android:textAlignment="center"
-                android:textSize="19sp"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
                 app:layout_constraintTop_toTopOf="@+id/linearLayout2"
                 tools:layout_editor_absoluteX="124dp" />
         </LinearLayout>

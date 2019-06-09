@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fragment_header_btc"
     tools:context=".SalesForceHeader">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,9 +12,8 @@
     <TextView
         android:id="@+id/txt_Header2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="16dp"
-        android:background="@android:color/holo_green_dark"
         android:text="@string/txt_Header"
         android:textAlignment="center"
         android:textColor="@android:color/black"

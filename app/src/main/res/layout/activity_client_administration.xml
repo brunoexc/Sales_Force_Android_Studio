@@ -90,18 +90,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/client_buttons_btc"
                 android:onClick="OnClickbuttonEditarCliente"
                 android:text="@string/but_CA_Edit"
-                android:textSize="16sp" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/but_CA_Delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/client_buttons_btc"
                 android:onClick="AlertaDelete"
                 android:text="@string/but_CA_Delete"
-                android:textSize="16sp" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

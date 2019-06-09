@@ -469,9 +469,11 @@
                 android:layout_marginStart="124dp"
                 android:layout_marginTop="12dp"
                 android:layout_weight="1"
+                android:background="@drawable/client_buttons_btc"
                 android:onClick="OnClickbuttonCadastrar"
                 android:text="@string/but_RegisterClient"
-                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
