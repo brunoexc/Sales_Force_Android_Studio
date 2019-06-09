@@ -55,6 +55,11 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
 
         cad_edi = intent.getIntExtra("cad_edi", 0);
 
+        //Criar combo box para os tipos de unidade medida dos protudos no cadastro
+        combo_ProductUM = findViewById(R.id.combo_ProductUM);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_ProductUM_str, android.R.layout.simple_spinner_item);
+        combo_ProductUM.setAdapter(adapter);
+
         //Verifica se a chamada da Activity é para editar ou cadastrar
         if(cad_edi == 1){
             //Cliente que será lido do banco/lista para editar
@@ -66,11 +71,6 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
             get_spinner = (ArrayAdapter) combo_ProductUM.getAdapter();
             spinner_position = get_spinner.getPosition(db_product.um);
         }
-
-        //Criar combo box para os tipos de unidade medida dos protudos no cadastro
-        combo_ProductUM = findViewById(R.id.combo_ProductUM);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_ProductUM_str, android.R.layout.simple_spinner_item);
-        combo_ProductUM.setAdapter(adapter);
 
         valida_obrigatorio = false;
         input_status = "";

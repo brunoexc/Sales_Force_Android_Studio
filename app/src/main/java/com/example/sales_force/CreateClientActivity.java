@@ -51,6 +51,11 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
         //Tratar tela para receber cadastro ou edição de cliente
         cad_edi = intent.getIntExtra("cad_edi", 0);
 
+        //Criar combo box para os estados no cadastro
+        combo_ClientUF = findViewById(R.id.combo_ClientUF);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_clientUF_str, android.R.layout.simple_spinner_item);
+        combo_ClientUF.setAdapter(adapter);
+
         if(cad_edi == 1){
             //Cliente que será lido do banco/lista para editar
             id_client = intent.getIntExtra("client_id", 0);
@@ -62,10 +67,7 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
             spinner_position = get_spinner.getPosition(db_client.uf);
         }
 
-        //Criar combo box para os estados no cadastro
-        combo_ClientUF = (Spinner) findViewById(R.id.combo_ClientUF);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_clientUF_str, android.R.layout.simple_spinner_item);
-        combo_ClientUF.setAdapter(adapter);
+
 
         //Tratar campos CPF e CNPJ (Inicializar como não modificavel até a pessoa selecionar um radio)
         findViewById(R.id.txt_input_ClientCPF).setFocusable(false);
