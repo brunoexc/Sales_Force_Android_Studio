@@ -60,9 +60,9 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        Log.i("TAG","oldVersion:"+oldVersion+" newVersion:"+newVersion);
-        if (newVersion > 1){
-            db.execSQL( "ALTER TABLE Clients add address_num TEXT;");
-        }
+//        Log.i("TAG","oldVersion:"+oldVersion+" newVersion:"+newVersion);
+//        if (newVersion > 1){
+//            db.execSQL( "ALTER TABLE Clients add address_num TEXT;");
+//        }
     }
 }

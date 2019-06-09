@@ -27,7 +27,7 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
     public String input_name, input_um, input_qtd_estoque, input_status, input_custo, input_preco_venda, db_status;
     public Boolean valida_obrigatorio;
 
-    public EditText get_name, get_qtd_estoque, get_custo, get_preco_venda, get_um, get_status;
+    public EditText get_name, get_qtd_estoque, get_custo, get_preco_venda;
     public Button troca_botao;
     public Spinner combo_ProductUM;
     public RadioButton rad_status;
@@ -47,34 +47,37 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
 
         controller = new ProductController(this);
 
+        //Acha os campos do formulário para cadastrar ou editar
         get_name = findViewById(R.id.txt_input_ProductName);
         get_qtd_estoque = findViewById(R.id.txt_input_ProductStock);
         get_custo = findViewById(R.id.txt_input_ProductCost);
         get_preco_venda = findViewById(R.id.txt_input_ProductSalesPrice);
 
         cad_edi = intent.getIntExtra("cad_edi", 0);
-        id_product = intent.getIntExtra("product_id", 0);
 
-        db_product = controller.lista_produto.get(id_product - 1);
+        //Verifica se a chamada da Activity é para editar ou cadastrar
+        if(cad_edi == 1){
+            //Cliente que será lido do banco/lista para editar
+            id_product = intent.getIntExtra("product_id", 0);
+            db_product = new Products();
+            db_product = controller.lista_produto.get(id_product - 1);
 
-        //Tratar tela para receber cadastro ou edição de produtos
-
-        troca_botao = findViewById(R.id.but_ProductRegister);
-        troca_botao.setOnClickListener(this);
-
+            //Pega os dados do Spinner para posicionar qual a unidade de medida lida na edição de produto
+            get_spinner = (ArrayAdapter) combo_ProductUM.getAdapter();
+            spinner_position = get_spinner.getPosition(db_product.um);
+        }
 
         //Criar combo box para os tipos de unidade medida dos protudos no cadastro
         combo_ProductUM = findViewById(R.id.combo_ProductUM);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_ProductUM_str, android.R.layout.simple_spinner_item);
         combo_ProductUM.setAdapter(adapter);
 
-        //Pega os dados do Spinner para posicionar qual a unidade de medida lida na edição de produto
-        get_spinner = (ArrayAdapter) combo_ProductUM.getAdapter();
-        spinner_position = get_spinner.getPosition(db_product.um);
-
-
         valida_obrigatorio = false;
         input_status = "";
+
+        //Tratar tela para receber cadastro ou edição de produtos
+        troca_botao = findViewById(R.id.but_ProductRegister);
+        troca_botao.setOnClickListener(this);
         botaoCadastroEditar();
     }
 

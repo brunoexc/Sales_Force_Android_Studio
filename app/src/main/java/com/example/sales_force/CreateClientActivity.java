@@ -1,7 +1,6 @@
 package com.example.sales_force;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +10,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.example.sales_force.Adaptadores.ClientAdapter;
 import com.example.sales_force.Classes.Clients;
 import com.example.sales_force.Controladores.ClientController;
-import com.example.sales_force.Controladores.UserController;
+
 
 public class CreateClientActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,28 +50,30 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
 
         //Tratar tela para receber cadastro ou edição de cliente
         cad_edi = intent.getIntExtra("cad_edi", 0);
-        id_client = intent.getIntExtra("client_id", 0);
 
-        db_client = controller.lista_cliente.get(id_client - 1);
+        if(cad_edi == 1){
+            //Cliente que será lido do banco/lista para editar
+            id_client = intent.getIntExtra("client_id", 0);
+            db_client = new Clients();
+            db_client = controller.lista_cliente.get(id_client - 1);
 
-        troca_botao = findViewById(R.id.but_RegisterClient);
-        troca_botao.setOnClickListener(this);
+            //Pega os dados do Spinner para posicionar qual a unidade de medida lida na edição de clientes
+            get_spinner = (ArrayAdapter) combo_ClientUF.getAdapter();
+            spinner_position = get_spinner.getPosition(db_client.uf);
+        }
 
         //Criar combo box para os estados no cadastro
         combo_ClientUF = (Spinner) findViewById(R.id.combo_ClientUF);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_clientUF_str, android.R.layout.simple_spinner_item);
         combo_ClientUF.setAdapter(adapter);
 
-        //Pega os dados do Spinner para posicionar qual a unidade de medida lida na edição de produto
-        get_spinner = (ArrayAdapter) combo_ClientUF.getAdapter();
-        spinner_position = get_spinner.getPosition(db_client.uf);
-
         //Tratar campos CPF e CNPJ (Inicializar como não modificavel até a pessoa selecionar um radio)
         findViewById(R.id.txt_input_ClientCPF).setFocusable(false);
         findViewById(R.id.txt_input_ClientCNPJ).setFocusable(false);
+
+        //Acha os campos do formulário para cadastrar ou editar
         get_cpf =  findViewById(R.id.txt_input_ClientCPF);
         get_cnpj = findViewById(R.id.txt_input_ClientCNPJ);
-
         get_name = findViewById(R.id.txt_input_ClientName);
         get_email = findViewById(R.id.txt_input_ClientEmail);
         get_phone = findViewById(R.id.txt_input_ClientPhone);
@@ -84,6 +83,9 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
         get_city = findViewById(R.id.txt_input_ClientCity);
         get_cep = findViewById(R.id.txt_input_ClientCEP);
 
+        //Tratar tela para receber cadastro ou edição de clientes
+        troca_botao = findViewById(R.id.but_RegisterClient);
+        troca_botao.setOnClickListener(this);
         botaoCadastroEditar();
     }
 
@@ -117,7 +119,7 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
             get_city.setText(db_client.city);
             get_cep.setText(db_client.cep);
 
-            //Quando carrego o editar produto, a variavel input_status do formulário recebe valor automático, ou seja,
+            //Quando carrego o editar cliente, a variavel input_status do formulário recebe valor automático, ou seja,
             //é necessário preencher ela manualmente porque no edição o valor input_status está como null e trava no método verificaObrigatórios()
             db_juridica_fisica = db_client.juridica_fisica;
             AtualizaCPFouCNPJ(db_juridica_fisica);
