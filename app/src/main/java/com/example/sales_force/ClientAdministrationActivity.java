@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.sales_force.Adaptadores.ClientAdapter;
 import com.example.sales_force.Classes.Clients;
@@ -23,7 +24,7 @@ public class ClientAdministrationActivity extends AppCompatActivity {
     public Clients client;
 
     public int id_client;
-    public EditText selected_client;
+    public TextView selected_client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,6 @@ public class ClientAdministrationActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         selected_client = findViewById(R.id.txt_input_CA_SelectedName);
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -23,7 +23,7 @@ public class UserAdministrationActivity extends AppCompatActivity {
     public ListView listView;
 
     public int id_user;
-    public EditText selected_user;
+    public TextView selected_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

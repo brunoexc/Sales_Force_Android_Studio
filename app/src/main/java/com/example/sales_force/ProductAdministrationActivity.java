@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
-        import com.example.sales_force.Adaptadores.ProductAdapter;
+import com.example.sales_force.Adaptadores.ProductAdapter;
 import com.example.sales_force.Classes.Products;
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Controladores.ProductController;
@@ -23,7 +24,7 @@ public class ProductAdministrationActivity extends AppCompatActivity implements 
     public Products product;
 
     public int id_product;
-    public EditText selected_product;
+    public TextView selected_product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
