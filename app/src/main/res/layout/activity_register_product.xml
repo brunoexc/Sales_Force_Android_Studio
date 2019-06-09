@@ -45,9 +45,9 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,49 +93,61 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/txt_ProductUM"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="@string/txt_ProductUM"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/combo_ProductUM"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:spinnerMode="dropdown" />
-
-                <TextView
-                    android:id="@+id/txt_ProductStock"
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="@string/txt_ProductStock"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/txt_input_ProductStock"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:ems="10"
-                    android:hint="10"
-                    android:inputType="textPersonName"
-                    android:text="@string/txt_input_ProductStock"
-                    android:textAlignment="viewStart" />
+                    android:layout_weight="60"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ProductUM"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ProductUM"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/combo_ProductUM"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_ProductStock"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ProductStock"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txt_input_ProductStock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="10"
+                        android:inputType="textPersonName"
+                        android:text="@string/txt_input_ProductStock"
+                        android:textAlignment="viewStart" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="412dp"
+                android:layout_width="match_parent"
                 android:layout_height="181dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -206,14 +218,14 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="160dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0"
+                            android:layout_weight="50"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/txt_ProductCost"
-                                android:layout_width="50dp"
+                                android:layout_width="70dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0"
                                 android:text="@string/txt_ProductCost"
@@ -225,7 +237,6 @@
                                 android:id="@+id/txt_input_ProductCost"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0"
                                 android:ems="10"
                                 android:hint="10"
                                 android:inputType="textPersonName"
@@ -233,25 +244,34 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/txt_ProductSalesCost"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:text="@string/txt_ProductSalesCost"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/txt_input_ProductSalesPrice"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:ems="10"
-                            android:hint="10"
-                            android:inputType="textPersonName"
-                            android:text="@string/txt_input_ProductSalesPrice" />
+                            android:layout_weight="50"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_ProductSalesCost"
+                                android:layout_width="110dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="@string/txt_ProductSalesCost"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <EditText
+                                android:id="@+id/txt_input_ProductSalesPrice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:ems="10"
+                                android:hint="10"
+                                android:inputType="textPersonName"
+                                android:text="@string/txt_input_ProductSalesPrice" />
+
+                        </LinearLayout>
+
                     </LinearLayout>
 
                 </LinearLayout>
