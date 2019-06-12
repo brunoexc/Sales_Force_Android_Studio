@@ -60,6 +60,13 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.combo_ProductUM_str, android.R.layout.simple_spinner_item);
         combo_ProductUM.setAdapter(adapter);
 
+        valida_obrigatorio = false;
+        input_status = "";
+
+        //Tratar tela para receber cadastro ou edição de produtos
+        troca_botao = findViewById(R.id.but_ProductRegister);
+        troca_botao.setOnClickListener(this);
+
         //Verifica se a chamada da Activity é para editar ou cadastrar
         if(cad_edi == 1){
             //Cliente que será lido do banco/lista para editar
@@ -71,13 +78,6 @@ public class RegisterProduct extends AppCompatActivity implements View.OnClickLi
             get_spinner = (ArrayAdapter) combo_ProductUM.getAdapter();
             spinner_position = get_spinner.getPosition(db_product.um);
         }
-
-        valida_obrigatorio = false;
-        input_status = "";
-
-        //Tratar tela para receber cadastro ou edição de produtos
-        troca_botao = findViewById(R.id.but_ProductRegister);
-        troca_botao.setOnClickListener(this);
         botaoCadastroEditar();
     }
 

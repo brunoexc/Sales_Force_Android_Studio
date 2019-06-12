@@ -83,7 +83,7 @@ public class ProductAdministrationActivity extends AppCompatActivity implements 
             alertDialogBuilder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(ProductAdministrationActivity.this, "Operação Cancelada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductAdministrationActivity.this, "Operação Cancelada!", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }
             });

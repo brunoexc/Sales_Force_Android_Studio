@@ -124,6 +124,7 @@
     <string name="txt_input_CA_SelectedName" />
     <string name="txt_title_CA_ClientMaintenance">Manutenção de Clientes</string>
     <string name="txt_LUL_title_User">Login</string>
+    <string name="txt_input_SelectedName">Selecione Produto</string>
     <string-array name="combo_clientUF_str">
         <item> "AC"</item>
         <item> "AL"</item>

@@ -160,8 +160,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="(27) 99999-9999"
+                        android:hint="27 99999-9999"
                         android:inputType="phone"
+                        android:maxLength="11"
                         android:text="@string/txt_input_ClientPhone"
                         android:textAlignment="viewStart"
                         android:textSize="16sp" />
@@ -238,7 +239,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:hint="000.000.000-00"
-                                android:inputType="textPersonName"
+                                android:inputType="number"
+                                android:maxLength="11"
                                 android:text="@string/txt_input_ClientCPF"
                                 android:textSize="16sp" />
 
@@ -268,7 +270,8 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:hint="00.000.000/0000-00"
-                                android:inputType="textPersonName"
+                                android:inputType="number"
+                                android:maxLength="14"
                                 android:text="@string/txt_input_ClientCNPJ"
                                 android:textSize="16sp" />
 
@@ -325,6 +328,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:hint="Rua das Flores"
+                            android:maxLength="17"
                             android:inputType="textPersonName"
                             android:text="@string/txt_input_ClientAddress" />
 
@@ -355,6 +359,7 @@
                             android:ems="10"
                             android:hint="25"
                             android:inputType="number"
+                            android:maxLength="4"
                             android:text="@string/txt_input_ClientAddressNum" />
                     </LinearLayout>
 
@@ -388,6 +393,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:hint="Laranjeiras"
+                            android:maxLength="12"
                             android:inputType="textPersonName"
                             android:text="@string/txt_input_ClientDistrict" />
                     </LinearLayout>
@@ -447,6 +453,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:hint="Serra"
+                            android:maxLength="12"
                             android:inputType="textPersonName"
                             android:text="@string/txt_input_ClientCity" />
 
@@ -475,6 +482,7 @@
                             android:layout_weight="1"
                             android:ems="10"
                             android:hint="29165-000"
+                            android:maxLength="8"
                             android:inputType="textPostalAddress"
                             android:text="@string/txt_input_ClientCEP" />
                     </LinearLayout>

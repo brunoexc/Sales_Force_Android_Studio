@@ -139,7 +139,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="10"
-                        android:inputType="textPersonName"
+                        android:inputType="number"
+                        android:maxLength="6"
                         android:text="@string/txt_input_ProductStock"
                         android:textAlignment="viewStart" />
                 </LinearLayout>
@@ -239,7 +240,8 @@
                                 android:layout_height="wrap_content"
                                 android:ems="10"
                                 android:hint="10"
-                                android:inputType="textPersonName"
+                                android:maxLength="10"
+                                android:inputType="number"
                                 android:text="@string/txt_input_ProductCost" />
 
                         </LinearLayout>
@@ -267,7 +269,8 @@
                                 android:layout_weight="0"
                                 android:ems="10"
                                 android:hint="10"
-                                android:inputType="textPersonName"
+                                android:maxLength="10"
+                                android:inputType="number"
                                 android:text="@string/txt_input_ProductSalesPrice" />
 
                         </LinearLayout>
