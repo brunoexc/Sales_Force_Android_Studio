@@ -59,17 +59,19 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL(
                 "CREATE TABLE Orders ("+
-                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "id    INTEGER NOT NULL PRIMARY KEY,"+
                         "id_client    INTEGER NOT NULL,"+
                         "id_user      INTEGER NOT NULL,"+
                         "order_total  REAL NOT NULL,"+
+                        "order_item    TEXT,"+
+                        "order_payment    TEXT,"+
                         "order_date    TEXT"+
                         ");"
         );
 
         db.execSQL(
                 "CREATE TABLE OrderItem ("+
-                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "id    INTEGER NOT NULL PRIMARY KEY,"+
                         "id_order    INTEGER NOT NULL,"+
                         "id_product  INTEGER NOT NULL,"+
                         "qtd_items   INTEGER NOT NULL,"+

@@ -154,6 +154,23 @@ public class ClientController {
         }
     }
 
+
+    public int getClientByName(String client_name){
+
+        Clients compara;
+
+        for(int i = 0; i < lista_cliente.size(); i++){
+
+            compara = lista_cliente.get(i);
+
+            if (compara.name.equals(client_name)  )
+                return compara.id;
+        }
+        return 0;
+    }
+
+
+
 }
 
 //
