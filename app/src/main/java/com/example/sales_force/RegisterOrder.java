@@ -169,6 +169,7 @@ public class RegisterOrder extends AppCompatActivity implements View.OnClickList
 
 
 
+
                         Toast.makeText(RegisterOrder.this, qtd_products + "x " + product.name + " adicionado(a) ao carrinho", Toast.LENGTH_SHORT).show();
                     }
                 }
