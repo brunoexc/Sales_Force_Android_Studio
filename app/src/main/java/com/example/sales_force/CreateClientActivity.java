@@ -64,8 +64,7 @@ public class CreateClientActivity extends AppCompatActivity implements View.OnCl
 
             //Pega os dados do Spinner para posicionar qual a unidade de medida lida na edição de clientes
             get_spinner = (ArrayAdapter) combo_ClientUF.getAdapter();
-            spinner_position = get_spinner.getPosition(db_client.uf);
-        }
+            spinner_position = get_spinner.getPosition(db_client.uf);        }
 
 
 

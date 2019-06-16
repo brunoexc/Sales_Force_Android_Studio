@@ -4,28 +4,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.example.sales_force.Classes.Clients;
-import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class ClientController {
 
     private Context context;
     public ArrayList<Clients> lista_cliente;
+    public ArrayList<String> lista_cliente_str;
+
 
     Database helper;
     SQLiteDatabase db;
@@ -34,6 +23,7 @@ public class ClientController {
     public ClientController(Context context) {
         this.context = context;
         lista_cliente = new ArrayList<>();
+        lista_cliente_str = new ArrayList<>();
 
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
@@ -64,6 +54,7 @@ public class ClientController {
                     cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
                     cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
                     lista_cliente.add(cliente);
+                    lista_cliente_str.add(cliente.name);
                 }
 
             } finally {

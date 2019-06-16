@@ -52,15 +52,16 @@ public class MenuActivity extends AppCompatActivity {
     }
     public void OnClickbuttonAdministarCliente (View view){
 
-        Intent call_activity_adminstrate_client = new Intent(this, ClientAdministrationActivity.class);
-        startActivity(call_activity_adminstrate_client);
+        Intent ca_adminstrate_client = new Intent(this, ClientAdministrationActivity.class);
+        startActivity(ca_adminstrate_client);
     }
 
     //ÁREA DO PEDIDO
     public void OnClickbuttonCadastrarPedido(View view){
 
-        Intent call_activity_register_order = new Intent(this, RegisterOrder.class);
-        startActivity(call_activity_register_order);
+        Intent ca_register_order = new Intent(this, RegisterOrder.class);
+        ca_register_order.putExtra("cad_edi", 0);
+        startActivity(ca_register_order);
     }
 
 

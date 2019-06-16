@@ -37,13 +37,13 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
 
     Database helper;
 
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
-        Intent intent = getIntent();
+        intent = getIntent();
 
         controller = new UserController(this);
 
