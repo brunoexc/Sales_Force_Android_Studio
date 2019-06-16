@@ -55,6 +55,36 @@ public class Database extends SQLiteOpenHelper {
                         "codigo_barras    TEXT"+
                         ");"
         );
+
+
+        db.execSQL(
+                "CREATE TABLE Orders ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "id_client    INTEGER NOT NULL,"+
+                        "id_user      INTEGER NOT NULL,"+
+                        "order_total  REAL NOT NULL,"+
+                        "order_date    TEXT"+
+                        ");"
+        );
+
+        db.execSQL(
+                "CREATE TABLE OrderItem ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "id_order    INTEGER NOT NULL,"+
+                        "id_product  INTEGER NOT NULL,"+
+                        "qtd_items   INTEGER NOT NULL,"+
+                        "item_total  REAL NOT NULL"+
+                        ");"
+        );
+
+        db.execSQL(
+                "CREATE TABLE Payment ("+
+                        "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+                        "id_order    TEXT NOT NULL,"+
+                        "payment_total    REAL"+
+                        ");"
+        );
+
     }
 
     @Override

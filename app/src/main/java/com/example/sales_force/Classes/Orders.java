@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Orders {
 
-    public int id_order, id_client, id_user;
+    public int id, id_client, id_user;
     public float order_total;
     public Date order_date;
     public Orders_Item order_item;

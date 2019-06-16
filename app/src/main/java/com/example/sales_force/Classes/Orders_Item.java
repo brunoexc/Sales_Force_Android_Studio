@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Orders_Item {
 
-    public int id_item_list, id_order, id_product, qtd_items;
+    public int id, id_order, id_product, qtd_items;
     public float item_total;
 
     public Orders_Item(){
