@@ -152,15 +152,13 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         input_user = get_user.getText().toString();
         input_password = get_password.getText().toString();
 
-        tarefa_p =  new TarefaPost();
-        tarefa_p.chamada = 0;
-        tarefa_p.callback = this;
+//        tarefa_p =  new TarefaPost();
+//        tarefa_p.chamada = 0;
+//        tarefa_p.callback = this;
+        //        String json = controller.CriarJson(input_name, input_user, input_password);
 
-        String json = controller.CriarJson(input_name, input_user, input_password);
 
-        Log.i("TAG", json);
 
-        tarefa_p.execute(json);
 
     }
 

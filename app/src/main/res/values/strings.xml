@@ -170,6 +170,15 @@
     </string-array>
     <string name="but_OrderAddProduct">+</string>
     <string name="but_sincronizaDados">Sincronizar Dados</string>
+    <string name="txt_title_SyncData">Sincronizar Dados</string>
+    <string name="but_SyncClient">Buscar Clientes</string>
+    <string name="but_SyncClientPost">Enviar Clientes</string>
+    <string name="but_SyncProductGet">Buscar Produtos</string>
+    <string name="but_SyncProductPost">Enviar Produtos</string>
+    <string name="but_SyncUserGet">Buscar Usuários</string>
+    <string name="but_SyncUserPost">Enviar Usuários</string>
+    <string name="but_SyncOrderGet">Buscar Pedidos</string>
+    <string name="but_SyncOrderPost">Enviar Pedidos</string>
 
 
 </resources>

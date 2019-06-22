@@ -21,7 +21,7 @@ public class TarefaPost extends AsyncTask<String, Void, Integer> {
     public String ipServidor;
     public String portaServidor;
     public int chamada, retorno;
-    public ITarefaCallback callback;
+    public SincronizaDados callback;
     URL url;
     HttpURLConnection urlConnection;
     BufferedInputStream reader;

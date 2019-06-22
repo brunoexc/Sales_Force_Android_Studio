@@ -44,12 +44,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/sincronizaDados"
+        android:id="@+id/but_sincronizaDados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="123dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="124dp"
+        android:onClick="onClickSincronizaDados"
         android:text="@string/but_sincronizaDados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -69,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sincronizaDados">
+        app:layout_constraintTop_toBottomOf="@+id/but_sincronizaDados">
 
         <LinearLayout
             android:layout_width="match_parent"

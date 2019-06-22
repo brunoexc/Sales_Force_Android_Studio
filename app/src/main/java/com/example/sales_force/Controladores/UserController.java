@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
 import com.example.sales_force.R;
+import com.example.sales_force.TarefaPost;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,24 +25,35 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class UserController {
 
     private Context context;
-    public ArrayList<Users> lista;
+    public ArrayList<Users> lista, lista_servidor;
     Database helper;
     SQLiteDatabase db;
     Cursor cursor;
+    Calendar calendario;
+    SimpleDateFormat timeNow;
+    TarefaPost tarefa_post;
 
 
 
     public UserController(Context context) {
         this.context = context;
         lista = new ArrayList<>();
+        lista_servidor = new ArrayList<>();
 
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
+
+        calendario = Calendar.getInstance();
+        timeNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        timeNow.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
 
         carregarLista();
     }
@@ -60,6 +72,7 @@ public class UserController {
                 usuario.name = cursor.getString(cursor.getColumnIndex("name"));
                 usuario.user  = cursor.getString(cursor.getColumnIndex("user"));
                 usuario.password = cursor.getString(cursor.getColumnIndex("password"));
+                usuario.ultimaAlteracao = cursor.getString(cursor.getColumnIndex("ultimaAlteracao"));
                 lista.add(usuario);
 //                editText.getText().append("id: "+id+ ", nome: "+nome+ ", documento: "+documento+"\n");
             }
@@ -75,7 +88,8 @@ public class UserController {
         usuario.name = name;
         usuario.user  = user;
         usuario.password = password;
-//        lista.add(usuario);
+//        usuario.ultimaAlteracao = timeNow.format(calendario.getTime());
+        lista_servidor.add(usuario);
 
         SQLiteDatabase db = helper.getWritableDatabase();
         try{
@@ -83,6 +97,7 @@ public class UserController {
             cv.put("name", usuario.name);
             cv.put("user", usuario.user);
             cv.put("password", usuario.password);
+//            cv.put("ultimaAlteracao", usuario.ultimaAlteracao);
             long id = db.insert("Users", null, cv);
             usuario.id = (int) id;
         }finally {
@@ -96,6 +111,7 @@ public class UserController {
         usuario.name = name;
         usuario.user  = user;
         usuario.password = password;
+        usuario.ultimaAlteracao = timeNow.format(calendario.getTime());
 
         SQLiteDatabase db = helper.getWritableDatabase();
         try{
@@ -103,6 +119,7 @@ public class UserController {
             cv.put("name", usuario.name);
             cv.put("user", usuario.user);
             cv.put("password", usuario.password);
+            cv.put("ultimaAlteracao", usuario.ultimaAlteracao);
 
             db.update("users", cv,"id = ?", new String[] {String.valueOf(id_user)});
 
@@ -125,6 +142,7 @@ public class UserController {
                 usuario.name = cursor.getString(cursor.getColumnIndex("name"));
                 usuario.user  = cursor.getString(cursor.getColumnIndex("user"));
                 usuario.password = cursor.getString(cursor.getColumnIndex("password"));
+                usuario.ultimaAlteracao = cursor.getString(cursor.getColumnIndex("ultimaAlteracao"));
                 lista.add(usuario);
 
                 if (usuario.user.equals(user_p) && usuario.password.equals(password_p) ){
@@ -153,30 +171,33 @@ public class UserController {
     }
 
 
-    public String CriarJson(String name, String user, String password){
+    public String CriarJson(Users user){
 
        String json;
-//       JSONObject jsonObj = new JSONObject();
-//       JSONArray dados = new JSONArray();
-        JSONObject obj = null;
+       JSONObject obj = null;
 
-        lista.clear();
+//        lista.clear();
         try {
-            Users usuario = new Users();
-            usuario.name = name;
-            usuario.user  = user;
-            usuario.password = password;
-            lista.add(usuario);
-
-
-            for (Users u : lista) {
                 obj = new JSONObject();
-                obj.put("id", u.id);
-                obj.put("nome", u.name);
-                obj.put("user", u.user);
-                obj.put("senha", u.password);
-//                dados.put(obj);
-            }
+                obj.put("id", user.id);
+                obj.put("nome", user.name);
+                obj.put("user", user.user);
+                obj.put("senha", user.ultimaAlteracao);
+            } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+        json = obj.toString();
+//            lista.add(usuario);
+
+
+//            for (Users u : lista) {
+//                obj = new JSONObject();
+//                obj.put("id", u.id);
+//                obj.put("nome", u.name);
+//                obj.put("user", u.user);
+//                obj.put("senha", u.password);
+////                dados.put(obj);
+//            }
 //            jsonObj.put("usuarios",dados);
 
 //            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
@@ -186,11 +207,6 @@ public class UserController {
 //            writter.close();
 //            fos.close();
 
-        } catch (JSONException e) {
-            Log.e("ERRO", e.getMessage());
-        }
-
-        json = obj.toString();
 
         return json;
 

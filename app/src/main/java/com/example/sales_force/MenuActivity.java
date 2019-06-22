@@ -64,7 +64,11 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(ca_register_order);
     }
 
+    public void onClickSincronizaDados (View view){
 
+        Intent ca_sync_data = new Intent(this, SincronizaDados.class);
+        startActivity(ca_sync_data);
+    }
 
 
     public void OnClickbuttonEmDesenvolvimento (View view){
