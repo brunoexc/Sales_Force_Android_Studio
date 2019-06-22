@@ -169,6 +169,7 @@
         <item> "Você deseja excluir o cliente "</item>
     </string-array>
     <string name="but_OrderAddProduct">+</string>
+    <string name="but_sincronizaDados">Sincronizar Dados</string>
 
 
 </resources>

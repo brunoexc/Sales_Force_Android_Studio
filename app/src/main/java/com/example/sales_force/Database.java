@@ -21,6 +21,7 @@ public class Database extends SQLiteOpenHelper {
                         "id    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
                         "name    TEXT NOT NULL,"+
                         "user    TEXT,"+
+                        "ultimaAlteracao    TEXT,"+
                         "password    NUMERIC"+
                         ");"
         );
@@ -39,7 +40,8 @@ public class Database extends SQLiteOpenHelper {
                         "uf    TEXT,"+
                         "city    TEXT,"+
                         "tipo    TEXT,"+
-                        "cep    TEXT"+
+                        "cep    TEXT,"+
+                        "ultimaAlteracao    TEXT"+
                         ");"
         );
 
@@ -52,7 +54,8 @@ public class Database extends SQLiteOpenHelper {
                         "status    TEXT,"+
                         "custo    TEXT,"+
                         "preco_venda    TEXT,"+
-                        "codigo_barras    TEXT"+
+                        "codigo_barras    TEXT,"+
+                        "ultimaAlteracao    TEXT"+
                         ");"
         );
 
@@ -63,7 +66,8 @@ public class Database extends SQLiteOpenHelper {
                         "id_client    INTEGER NOT NULL,"+
                         "id_user      INTEGER NOT NULL,"+
                         "order_total  REAL NOT NULL,"+
-                        "order_date    TEXT"+
+                        "order_date    TEXT,"+
+                        "ultimaAlteracao    TEXT"+
                         ");"
         );
 
@@ -73,7 +77,8 @@ public class Database extends SQLiteOpenHelper {
                         "id_order    INTEGER NOT NULL,"+
                         "id_product  INTEGER NOT NULL,"+
                         "qtd_items   INTEGER NOT NULL,"+
-                        "item_total  REAL NOT NULL"+
+                        "item_total  REAL NOT NULL,"+
+                        "ultimaAlteracao    TEXT"+
                         ");"
         );
 
@@ -81,7 +86,8 @@ public class Database extends SQLiteOpenHelper {
                 "CREATE TABLE Payment ("+
                         "id_payment    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"+
                         "id_order    INTEGER NOT NULL,"+
-                        "payment_total    REAL"+
+                        "payment_total    REAL,"+
+                        "ultimaAlteracao    TEXT"+
                         ");"
         );
 

@@ -21,6 +21,7 @@ public class Users  {
     public String name;
     public String user;
     public String password;
+    public String ultimaAlteracao;
 
     public Users() {}
 

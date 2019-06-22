@@ -3,27 +3,18 @@ package com.example.sales_force;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Controladores.UserController;
+import com.example.sales_force.Interfaces.ITarefaCallback;
 
-import org.json.JSONException;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
-public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateUserActivity extends AppCompatActivity implements View.OnClickListener, ITarefaCallback {
 
     UserController controller;
     Users db_user;
@@ -35,7 +26,9 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
     public EditText get_name, get_user, get_password;
     public Button troca_botao;
 
+
     Database helper;
+    TarefaPost tarefa_p;
 
     Intent intent;
 
@@ -153,6 +146,29 @@ public class CreateUserActivity extends AppCompatActivity implements View.OnClic
         return valida;
     }
 
+    public void onClickSalvarUsuario (View view){
+
+        input_name = get_name.getText().toString();
+        input_user = get_user.getText().toString();
+        input_password = get_password.getText().toString();
+
+        tarefa_p =  new TarefaPost();
+        tarefa_p.chamada = 0;
+        tarefa_p.callback = this;
+
+        String json = controller.CriarJson(input_name, input_user, input_password);
+
+        Log.i("TAG", json);
+
+        tarefa_p.execute(json);
+
+    }
+
+
+    @Override
+    public void retornoCallback(int code) {
+        Toast.makeText(getApplicationContext(), "Retorno: " + code, Toast.LENGTH_SHORT).show();
+    }
 }
 
 

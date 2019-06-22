@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,8 +19,9 @@ import android.widget.Toast;
 import com.example.sales_force.Adaptadores.UserAdapter;
 import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Controladores.UserController;
+import com.example.sales_force.Interfaces.ITarefaCallback;
 
-public class UserAdministrationActivity extends AppCompatActivity {
+public class UserAdministrationActivity extends AppCompatActivity implements ITarefaCallback {
 
     public UserController controller;
     public Users user;
@@ -30,6 +32,8 @@ public class UserAdministrationActivity extends AppCompatActivity {
 
     public TextView selected_user;
     public int id_user;
+    TarefaPost tarefaPost;
+    TarefaDelete tarefaDelete;
 
 
     @Override
@@ -80,6 +84,12 @@ public class UserAdministrationActivity extends AppCompatActivity {
                     selected_user.setText("");
                     adapter.notifyDataSetChanged();
                     Toast.makeText(UserAdministrationActivity.this, "Usuário " + user.name + " deletado", Toast.LENGTH_SHORT).show();
+
+                    tarefaDelete =  new TarefaDelete();
+                    tarefaDelete.callback = this;
+
+                    tarefaDelete.execute(String.valueOf(id_user));
+
                 }
             });
             alertDialogBuilder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -111,4 +121,8 @@ public class UserAdministrationActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void retornoCallback(int code) {
+        Toast.makeText(getApplicationContext(), "Retorno: " + code, Toast.LENGTH_SHORT).show();
+    }
 }

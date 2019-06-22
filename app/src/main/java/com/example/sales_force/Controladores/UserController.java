@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -149,6 +150,50 @@ public class UserController {
         }finally {
             db.close();
         }
+    }
+
+
+    public String CriarJson(String name, String user, String password){
+
+       String json;
+//       JSONObject jsonObj = new JSONObject();
+//       JSONArray dados = new JSONArray();
+        JSONObject obj = null;
+
+        lista.clear();
+        try {
+            Users usuario = new Users();
+            usuario.name = name;
+            usuario.user  = user;
+            usuario.password = password;
+            lista.add(usuario);
+
+
+            for (Users u : lista) {
+                obj = new JSONObject();
+                obj.put("id", u.id);
+                obj.put("nome", u.name);
+                obj.put("user", u.user);
+                obj.put("senha", u.password);
+//                dados.put(obj);
+            }
+//            jsonObj.put("usuarios",dados);
+
+//            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
+//            PrintWriter writter = new PrintWriter(fos);
+//            writter.println(jsonObj.toString());
+//            writter.flush();
+//            writter.close();
+//            fos.close();
+
+        } catch (JSONException e) {
+            Log.e("ERRO", e.getMessage());
+        }
+
+        json = obj.toString();
+
+        return json;
+
     }
 
 

@@ -48,7 +48,7 @@ public class OrderItemController {
 
         order_item.id_order = order_id;
 
-        if(order_item.id > 1){
+        if(order_item.id_order_item > 1){
             order_item.id_order = orderController.lista_pedidos.size() + 1;
         }else{
             order_item.id_order = order_id;
@@ -67,7 +67,7 @@ public class OrderItemController {
             cv.put("qtd_items", order_item.qtd_items);
             cv.put("item_total", order_item.item_total);
             long id = db.insert("OrderItem", null, cv);
-            order_item.id = (int) id;
+            order_item.id_order_item = (int) id;
         }finally {
             db.close();
         }
@@ -83,7 +83,7 @@ public class OrderItemController {
             cv.put("qtd_items", order_item.qtd_items);
             cv.put("item_total", order_item.item_total);
             long id = db.insert("OrderItem", null, cv);
-            order_item.id = (int) id;
+            order_item.id_order_item = (int) id;
         }finally {
             db.close();
         }

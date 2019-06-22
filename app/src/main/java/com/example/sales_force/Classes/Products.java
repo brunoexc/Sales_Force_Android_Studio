@@ -10,6 +10,7 @@ public class Products {
     public String custo;
     public String preco_venda;
     public int codigo_barras;
+    public String ultimaAlteracao;
 
 
     public Products(){
