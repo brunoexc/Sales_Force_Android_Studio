@@ -150,23 +150,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-        <Button
-            android:id="@+id/but_RegisterAPI"
-            android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="80dp"
-            android:layout_weight="1"
-            android:background="@drawable/user_buttons_btc"
-            android:onClick="onClickSalvarUsuario"
-            android:text="@string/but_Create"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

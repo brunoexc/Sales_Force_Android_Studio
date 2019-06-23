@@ -23,6 +23,7 @@ public class SincronizaDados extends AppCompatActivity implements ITarefaCallbac
     public ProductController productController;
     public ClientController clientController;
     public TarefaPost tarefaPost;
+    public TarefaGet tarefaGet;
     public Users usuario;
     public Products produto;
     public Clients cliente;
@@ -56,6 +57,26 @@ public class SincronizaDados extends AppCompatActivity implements ITarefaCallbac
 
     }
 
+    public void onClickBuscarUsuario (View view){
+
+        String json;
+        for(int i = 0; i < userController.lista.size(); i++){
+            usuario = new Users();
+            usuario = userController.lista.get(i);
+            json = userController.CriarJson(usuario);
+
+            tarefaGet =  new TarefaGet();
+            tarefaGet.chamada = 0;
+            tarefaGet.callback = this;
+            tarefaGet.execute(json);
+
+            Toast.makeText(getApplicationContext(), "Dados: "+ tarefaGet.dados, Toast.LENGTH_SHORT).show();
+
+
+        }
+
+    }
+
     public void onClickEnviarCliente (View view){
 
         String json;
@@ -85,7 +106,6 @@ public class SincronizaDados extends AppCompatActivity implements ITarefaCallbac
             tarefaPost.callback = this;
             tarefaPost.execute(json);
         }
-
     }
 
 
