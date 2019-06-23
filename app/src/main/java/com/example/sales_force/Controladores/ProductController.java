@@ -7,20 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.sales_force.Classes.Products;
-import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class ProductController {
 
@@ -29,6 +22,8 @@ public class ProductController {
     Database helper;
     SQLiteDatabase db;
     Cursor cursor;
+    Calendar calendario;
+    SimpleDateFormat timeNow;
 
     public ProductController(Context context) {
 
@@ -36,6 +31,11 @@ public class ProductController {
         lista_produto = new ArrayList<Products>();
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
+
+        calendario = Calendar.getInstance();
+        timeNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        timeNow.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
+
         carregarLista();
     }
 
@@ -57,6 +57,7 @@ public class ProductController {
                 produto.custo = cursor.getString(cursor.getColumnIndex("custo"));
                 produto.preco_venda = cursor.getString(cursor.getColumnIndex("preco_venda"));
                 produto.codigo_barras = cursor.getInt(cursor.getColumnIndex("codigo_barras"));
+                produto.ultimaAlteracao = cursor.getString(cursor.getColumnIndex("ultimaAlteracao"));
 
                 lista_produto.add(produto);
             }
@@ -106,6 +107,7 @@ public class ProductController {
         produto.custo = custo;
         produto.preco_venda = preco;
         produto.codigo_barras = codigo_barras;
+        produto.ultimaAlteracao = timeNow.format(calendario.getTime());
 
         SQLiteDatabase db = helper.getWritableDatabase();
         try{
@@ -117,6 +119,7 @@ public class ProductController {
             cv.put("custo", produto.custo);
             cv.put("preco_venda", produto.preco_venda);
             cv.put("codigo_barras", produto.codigo_barras);
+            cv.put("ultimaAlteracao", produto.ultimaAlteracao);
 
             db.update("Products", cv,"id = ?", new String[] {String.valueOf(id_product)});
 
@@ -133,6 +136,31 @@ public class ProductController {
         }finally {
             db.close();
         }
+    }
+
+
+    public String CriarJson(Products product){
+
+        String json;
+        JSONObject obj = null;
+        try {
+            obj = new JSONObject();
+            obj.put("id", product.id);
+            obj.put("nome", product.name);
+            obj.put("um", product.um);
+            obj.put("qtd_estoque", product.qtd_estoque);
+            obj.put("status", product.status);
+            obj.put("custo", product.custo);
+            obj.put("preco_venda", product.preco_venda);
+            obj.put("codigo_barras", product.codigo_barras);
+//            obj.put("ultimaAlteracao", product.ultimaAlteracao);
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
+        json = obj.toString();
+
+        return json;
     }
 
 

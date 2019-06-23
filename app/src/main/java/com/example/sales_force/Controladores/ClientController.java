@@ -6,8 +6,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.sales_force.Classes.Clients;
+import com.example.sales_force.Classes.Users;
 import com.example.sales_force.Database;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class ClientController {
 
@@ -15,6 +23,8 @@ public class ClientController {
     public ArrayList<Clients> lista_cliente;
     public ArrayList<String> lista_cliente_str;
 
+    Calendar calendario;
+    SimpleDateFormat timeNow;
 
     Database helper;
     SQLiteDatabase db;
@@ -27,6 +37,11 @@ public class ClientController {
 
         helper = new Database(this.context);
         db = helper.getWritableDatabase();
+
+        calendario = Calendar.getInstance();
+        timeNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        timeNow.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
+
         carregarLista();
     }
 
@@ -53,6 +68,7 @@ public class ClientController {
                     cliente.city = cursor.getString(cursor.getColumnIndex("city"));
                     cliente.cep = cursor.getString(cursor.getColumnIndex("cep"));
                     cliente.juridica_fisica = cursor.getString(cursor.getColumnIndex("tipo"));
+                    cliente.ultimaAlteracao = cursor.getString(cursor.getColumnIndex("ultimaAlteracao"));
                     lista_cliente.add(cliente);
                     lista_cliente_str.add(cliente.name);
                 }
@@ -119,6 +135,7 @@ public class ClientController {
         cliente.city = city;
         cliente.cep = cep;
         cliente.juridica_fisica = juridica_fisica;
+        cliente.ultimaAlteracao = timeNow.format(calendario.getTime());
 
         SQLiteDatabase db = helper.getWritableDatabase();
         try {
@@ -135,6 +152,7 @@ public class ClientController {
             cv.put("city", cliente.city);
             cv.put("cep", cliente.cep);
             cv.put("tipo", cliente.juridica_fisica);
+            cv.put("ultimaAlteracao", cliente.ultimaAlteracao);
 
             db.update("Clients", cv, "id = ?", new String[]{String.valueOf(id_client)});
 
@@ -155,19 +173,48 @@ public class ClientController {
     }
 
 
-    public int getClientByName(String client_name){
+    public String CriarJson(Clients client){
 
-        Clients compara;
-
-        for(int i = 0; i < lista_cliente.size(); i++){
-
-            compara = lista_cliente.get(i);
-
-            if (compara.name.equals(client_name)  )
-                return compara.id;
+        String json;
+        JSONObject obj = null;
+        try {
+            obj = new JSONObject();
+            obj.put("id", client.id);
+            obj.put("nome", client.name);
+            obj.put("email", client.email);
+            obj.put("phone", client.phone);
+            obj.put("cpf", client.cpf);
+            obj.put("cnpj", client.cnpj);
+            obj.put("address", client.address);
+            obj.put("address_num", client.address_num);
+            obj.put("district", client.district);
+            obj.put("uf", client.uf);
+            obj.put("city", client.city);
+            obj.put("cep", client.cep);
+            obj.put("juridica_fisica", client.juridica_fisica);
+            obj.put("ultimaAlteracao", client.ultimaAlteracao);
+        } catch (JSONException e1) {
+            e1.printStackTrace();
         }
-        return 0;
+        json = obj.toString();
+
+        return json;
     }
+
+
+//    public int getClientByName(String client_name){
+//
+//        Clients compara;
+//
+//        for(int i = 0; i < lista_cliente.size(); i++){
+//
+//            compara = lista_cliente.get(i);
+//
+//            if (compara.name.equals(client_name)  )
+//                return compara.id;
+//        }
+//        return 0;
+//    }
 
 
 

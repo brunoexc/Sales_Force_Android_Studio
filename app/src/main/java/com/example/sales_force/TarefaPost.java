@@ -91,7 +91,6 @@ public class TarefaPost extends AsyncTask<String, Void, Integer> {
                 printStream.println(params[0]);
 
                 urlConnection.connect();
-
                 retorno = urlConnection.getResponseCode();
 
                 break;

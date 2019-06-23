@@ -39,9 +39,6 @@ public class UserController {
     Cursor cursor;
     Calendar calendario;
     SimpleDateFormat timeNow;
-    TarefaPost tarefa_post;
-
-
 
     public UserController(Context context) {
         this.context = context;
@@ -74,7 +71,6 @@ public class UserController {
                 usuario.password = cursor.getString(cursor.getColumnIndex("password"));
                 usuario.ultimaAlteracao = cursor.getString(cursor.getColumnIndex("ultimaAlteracao"));
                 lista.add(usuario);
-//                editText.getText().append("id: "+id+ ", nome: "+nome+ ", documento: "+documento+"\n");
             }
             cursor.close();
         }finally {
@@ -175,41 +171,19 @@ public class UserController {
 
        String json;
        JSONObject obj = null;
-
-//        lista.clear();
         try {
                 obj = new JSONObject();
                 obj.put("id", user.id);
                 obj.put("nome", user.name);
                 obj.put("user", user.user);
-                obj.put("senha", user.ultimaAlteracao);
+                obj.put("senha", user.password);
+                obj.put("ultimaAlteracao", user.ultimaAlteracao);
             } catch (JSONException e1) {
             e1.printStackTrace();
         }
         json = obj.toString();
-//            lista.add(usuario);
-
-
-//            for (Users u : lista) {
-//                obj = new JSONObject();
-//                obj.put("id", u.id);
-//                obj.put("nome", u.name);
-//                obj.put("user", u.user);
-//                obj.put("senha", u.password);
-////                dados.put(obj);
-//            }
-//            jsonObj.put("usuarios",dados);
-
-//            FileOutputStream fos = this.context.openFileOutput("usuarios.txt", Context.MODE_PRIVATE);
-//            PrintWriter writter = new PrintWriter(fos);
-//            writter.println(jsonObj.toString());
-//            writter.flush();
-//            writter.close();
-//            fos.close();
-
 
         return json;
-
     }
 
 
